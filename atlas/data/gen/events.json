@@ -1,1 +1,1 @@
-{"parts": 2, "files": ["events-0.pmtiles", "events-1.pmtiles"], "minzoom": 2, "maxzoom": 7}
+{"parts": 8, "files": ["events-0.pmtiles", "events-1.pmtiles", "events-2.pmtiles", "events-3.pmtiles", "events-4.pmtiles", "events-5.pmtiles", "events-6.pmtiles", "events-7.pmtiles"], "minzoom": 2, "maxzoom": 9}

@@ -1,5 +1,5 @@
 {
- "built": "2026-10-17T18:02:29+00:00",
+ "built": "2026-10-17T20:27:42+00:00",
  "sources": {
   "wikidata": {
    "name": "Wikidata",
@@ -7,7 +7,7 @@
    "license": "CC0 1.0",
    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
    "note": "Events with a date and a location; queried via the QLever SPARQL endpoint. Linked Wikipedia articles are CC BY-SA and are only linked, never copied.",
-   "rows": 54236,
+   "rows": 384876,
    "unit": "events"
   },
   "usgs": {
@@ -51,8 +51,26 @@
    "url": "https://www.gdeltproject.org/",
    "license": "Free and open, citation required",
    "license_url": "https://www.gdeltproject.org/about.html#termsofuse",
-   "note": "Machine-coded news events (CAMEO 14 protests; 18-20 violence), aggregated to H3 r5 per day. Noisy, P3.",
-   "rows": 85538,
+   "note": "Machine-coded news events (CAMEO 14 protests; 18-20 violence) with the source article URLs. Last 120 days: H3 r5 per day; 2013-04 onwards: H3 r4 per ISO week (>= 3 news events, top-3 articles). Noisy, P3/P4.",
+   "rows": 761274,
+   "unit": "events"
+  },
+  "ibtracs": {
+   "name": "NOAA NCEI IBTrACS v04r01 – International Best Track Archive for Climate Stewardship",
+   "url": "https://www.ncei.noaa.gov/products/international-best-track-archive",
+   "license": "Public domain (U.S. Government); cite Knapp et al. 2010",
+   "license_url": "https://www.ncei.noaa.gov/products/international-best-track-archive",
+   "note": "Every tropical cyclone since 1842: one event at lifetime maximum intensity plus the storm track.",
+   "rows": 13624,
+   "unit": "events"
+  },
+  "osm": {
+   "name": "OpenStreetMap – historic=battlefield / historic=wreck",
+   "url": "https://www.openstreetmap.org/",
+   "license": "ODbL 1.0 (© OpenStreetMap contributors)",
+   "license_url": "https://www.openstreetmap.org/copyright",
+   "note": "Only objects with a date tag. The extracted rows are available under ODbL in the data release.",
+   "rows": 0,
    "unit": "events"
   },
   "police_uk": {
@@ -90,6 +108,33 @@
    "note": "2024 (latest year published as open data after LAPD moved to NIBRS), rounded to the nearest hundred block (P2), published only as H3 counts.",
    "rows": 127567,
    "unit": "records aggregated to H3"
+  },
+  "seattle": {
+   "name": "City of Seattle Open Data – SPD Crime Data 2008-Present",
+   "url": "https://data.seattle.gov/d/tazs-3rd5",
+   "license": "Public domain (City of Seattle Open Data)",
+   "license_url": "https://www.seattle.gov/tech/reports-and-data/open-data",
+   "note": "Last 12 months, block-level (P2), published only as H3 counts.",
+   "rows": 65847,
+   "unit": "records aggregated to H3"
+  },
+  "montgomery": {
+   "name": "Montgomery County, MD Open Data – Crime",
+   "url": "https://data.montgomerycountymd.gov/d/icn6-v9z3",
+   "license": "Public domain",
+   "license_url": "https://data.montgomerycountymd.gov/",
+   "note": "Last 12 months, published only as H3 counts.",
+   "rows": 40471,
+   "unit": "records aggregated to H3"
+  },
+  "sf": {
+   "name": "DataSF – Police Department Incident Reports 2018 to Present",
+   "url": "https://data.sfgov.org/d/wg3w-h783",
+   "license": "ODC Public Domain Dedication and License (PDDL)",
+   "license_url": "https://opendatacommons.org/licenses/pddl/1-0/",
+   "note": "Last 12 months, intersection-level (P2), published only as H3 counts.",
+   "rows": 93491,
+   "unit": "records aggregated to H3"
   }
  },
  "basemap": {
@@ -126,21 +171,38 @@
    "attribution": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap"
   }
  },
+ "stats": {
+  "gus_bdl": {
+   "name": "GUS – Bank Danych Lokalnych (przestępstwa stwierdzone przez Policję, powiaty)",
+   "url": "https://bdl.stat.gov.pl/",
+   "license": "Free reuse with attribution (GUS)",
+   "license_url": "https://bdl.stat.gov.pl/bdl/start",
+   "note": "Crimes per 1000 inhabitants per powiat and year, shown in the place panel."
+  },
+  "cbs": {
+   "name": "CBS StatLine 83648NED – Geregistreerde criminaliteit per gemeente",
+   "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83648NED",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "note": "Registered crimes (total and per 1000 inhabitants) per gemeente and year, shown in the place panel."
+  },
+  "geonames": {
+   "name": "GeoNames cities500",
+   "url": "https://www.geonames.org/",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "note": "Towns and villages with population >= 500 (clickable place points)."
+  },
+  "geoboundaries_adm3": {
+   "name": "geoBoundaries gbOpen ADM3 (municipalities)",
+   "url": "https://www.geoboundaries.org/",
+   "license": "Per country, see boundaries.admin3",
+   "license_url": "https://www.geoboundaries.org/",
+   "note": "4th drill-down level (gminy, Gemeinden, communes ...)."
+  }
+ },
+ "merged_duplicates": 21796,
  "crime_months": {
-  "nyc": [
-   "2025-07",
-   "2025-08",
-   "2025-09",
-   "2025-10",
-   "2025-11",
-   "2025-12",
-   "2026-01",
-   "2026-02",
-   "2026-03",
-   "2026-04",
-   "2026-05",
-   "2026-06"
-  ],
   "la": [
    "2024-01",
    "2024-02",
@@ -155,6 +217,21 @@
    "2024-11",
    "2024-12"
   ],
+  "montgomery": [
+   "2025-10",
+   "2025-11",
+   "2025-12",
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06",
+   "2026-07",
+   "2026-08",
+   "2026-09",
+   "2026-10"
+  ],
   "police_uk": [
    "2025-09",
    "2025-10",
@@ -168,6 +245,50 @@
    "2026-06",
    "2026-07",
    "2026-08"
+  ],
+  "seattle": [
+   "2025-10",
+   "2025-11",
+   "2025-12",
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06",
+   "2026-07",
+   "2026-08",
+   "2026-09",
+   "2026-10"
+  ],
+  "sf": [
+   "2025-10",
+   "2025-11",
+   "2025-12",
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06",
+   "2026-07",
+   "2026-08",
+   "2026-09",
+   "2026-10"
+  ],
+  "nyc": [
+   "2025-07",
+   "2025-08",
+   "2025-09",
+   "2025-10",
+   "2025-11",
+   "2025-12",
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06"
   ],
   "chicago": [
    "2025-10",
@@ -186,8 +307,8 @@
   ]
  },
  "crime_cells": {
-  "6": 5363,
-  "8": 81551
+  "6": 5441,
+  "8": 83329
  },
  "boundaries": {
   "admin0": "Natural Earth 1:50m (public domain)",
@@ -1431,6 +1552,505 @@
     "year": "2020",
     "url": "https://www.geoboundaries.org/api/current/gbOpen/ZWE/ADM2/",
     "features": 91
+   }
+  },
+  "admin3": {
+   "AL": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2013",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/ALB/ADM3/",
+    "features": 373
+   },
+   "AO": {
+    "source": "geoBoundaries gbOpen geoBoundaries, Instituto Nacional de Estatística, República de Angola; citypopulation.de",
+    "license": "Creative Commons Attribution 3.0 License",
+    "year": "2014",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/AGO/ADM3/",
+    "features": 558
+   },
+   "AT": {
+    "source": "geoBoundaries gbOpen Federal Office for Metrology and Survey, Austria, Derived from ADM4 layer",
+    "license": "Creative Commons Attribution-ShareAlike 2.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/AUT/ADM3/",
+    "features": 2097
+   },
+   "BA": {
+    "source": "geoBoundaries gbOpen Wikimedia Commons",
+    "license": "Public Domain",
+    "year": "2013",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BIH/ADM3/",
+    "features": 142
+   },
+   "BD": {
+    "source": "geoBoundaries gbOpen Bangladesh Bureau of Statistics (BBS), OCHA ROAP",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BGD/ADM3/",
+    "features": 544
+   },
+   "BE": {
+    "source": "geoBoundaries gbOpen GeoBoundaries, https//data.gov.be/en/dataset/0202b8dd-1c7e-4331-8ba7-35e1fef4037a",
+    "license": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "year": "2014",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BEL/ADM3/",
+    "features": 43
+   },
+   "BF": {
+    "source": "geoBoundaries gbOpen New York University Spatial Data Repository, Stanford University, Map Maker Limited",
+    "license": "Public Domain",
+    "year": "2007",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BFA/ADM3/",
+    "features": 351
+   },
+   "BI": {
+    "source": "geoBoundaries gbOpen Regional Centre For Mapping Of Resources For Development (RCMRD)",
+    "license": "Public Domain",
+    "year": "2015",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BDI/ADM3/",
+    "features": 2615
+   },
+   "BJ": {
+    "source": "geoBoundaries gbOpen uMap, Open Street Map",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BEN/ADM3/",
+    "features": 546
+   },
+   "BO": {
+    "source": "geoBoundaries gbOpen GeoBolivia",
+    "license": "Public Domain",
+    "year": "2015",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/BOL/ADM3/",
+    "features": 339
+   },
+   "CA": {
+    "source": "geoBoundaries gbOpen Statistics Canada (StatCan)",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2016",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CAN/ADM3/",
+    "features": 5162
+   },
+   "CF": {
+    "source": "geoBoundaries gbOpen Agency for Technical Cooperation and Development (ACTED), OCHA Central African Republic",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2018",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CAF/ADM3/",
+    "features": 175
+   },
+   "CH": {
+    "source": "geoBoundaries gbOpen Federal Office of Topography swisstopo",
+    "license": "Federal Office of Topography swisstopo License",
+    "year": "2022",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CHE/ADM3/",
+    "features": 2286
+   },
+   "CI": {
+    "source": "geoBoundaries gbOpen Comité National de Télédétection et d'Information Géographique (CNTIG), OCHA ROWCA",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CIV/ADM3/",
+    "features": 510
+   },
+   "CL": {
+    "source": "geoBoundaries gbOpen La Biblioteca del Congreso Nacional de Chile (BCN), OCHA ROLAC",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CHL/ADM3/",
+    "features": 345
+   },
+   "CM": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CMR/ADM3/",
+    "features": 360
+   },
+   "CN": {
+    "source": "geoBoundaries gbOpen Lee Beryman, OpenStreetMap",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CHN/ADM3/",
+    "features": 2864
+   },
+   "CR": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CRI/ADM3/",
+    "features": 472
+   },
+   "CZ": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/CZE/ADM3/",
+    "features": 6257
+   },
+   "DE": {
+    "source": "geoBoundaries gbOpen Federal Agency for Cartography and Geodesy",
+    "license": "Data license Germany - Attribution - Version 2.0",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/DEU/ADM3/",
+    "features": 428
+   },
+   "DZ": {
+    "source": "geoBoundaries gbOpen Open Street Map",
+    "license": "Creative Commons Attribution-ShareAlike 2.0",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/DZA/ADM3/",
+    "features": 1540
+   },
+   "ET": {
+    "source": "geoBoundaries gbOpen Open Africa, Code for Ethiopia",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2016",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/ETH/ADM3/",
+    "features": 690
+   },
+   "FI": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/FIN/ADM3/",
+    "features": 312
+   },
+   "FJ": {
+    "source": "geoBoundaries gbOpen SOPAC, Fiji Islands Bureau of Statistics, PacGeo",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/FJI/ADM3/",
+    "features": 86
+   },
+   "FR": {
+    "source": "geoBoundaries gbOpen Institut national de l'information géographique et forestière (IGN-F)",
+    "license": "Etalab Open License 2.0",
+    "year": "2022",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/FRA/ADM3/",
+    "features": 320
+   },
+   "GB": {
+    "source": "geoBoundaries gbOpen Office for National Statistics",
+    "license": "Open Government Licence v3.0",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/GBR/ADM3/",
+    "features": 216
+   },
+   "GM": {
+    "source": "geoBoundaries gbOpen Knippenberg, Erwin, & Moritz, Meyer. “The Hidden Potential of Mobile Phone Data Insights on COVID-19 in the Gambia.” Data Blog, The World Bank Data Catalog",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/GMB/ADM3/",
+    "features": 120
+   },
+   "GN": {
+    "source": "geoBoundaries gbOpen World Food Programme, OCHA ROWCA",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/GIN/ADM3/",
+    "features": 340
+   },
+   "GR": {
+    "source": "geoBoundaries gbOpen geoBoundaries, Wikimedia Commons",
+    "license": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "year": "2010",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/GRC/ADM3/",
+    "features": 326
+   },
+   "HT": {
+    "source": "geoBoundaries gbOpen FEWS NET",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2018",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/HTI/ADM3/",
+    "features": 140
+   },
+   "HU": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/HUN/ADM3/",
+    "features": 3357
+   },
+   "IN": {
+    "source": "geoBoundaries gbOpen Pathways Data Pvt. Ltd., lgdirectory.gov.in",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2018",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/IND/ADM3/",
+    "features": 6822
+   },
+   "IR": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/IRN/ADM3/",
+    "features": 1067
+   },
+   "IT": {
+    "source": "geoBoundaries gbOpen ISTAT, National Institute of Statistics",
+    "license": "Creative Commons Attribution 3.0 License",
+    "year": "2023",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/ITA/ADM3/",
+    "features": 107
+   },
+   "JM": {
+    "source": "geoBoundaries gbOpen Justin Meyers, Planning Office of Jamaica",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/JAM/ADM3/",
+    "features": 829
+   },
+   "KE": {
+    "source": "geoBoundaries gbOpen Benedict Aboki Omare and George Omare",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/KEN/ADM3/",
+    "features": 1452
+   },
+   "KH": {
+    "source": "geoBoundaries gbOpen Open Development Mekong, Open Development Cambodia",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2014",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/KHM/ADM3/",
+    "features": 1633
+   },
+   "KM": {
+    "source": "geoBoundaries gbOpen Comoros National Disaster Management Agency (COSEP-Centre des secours et de la protection civil), OCHA ROSEA",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2019",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/COM/ADM3/",
+    "features": 55
+   },
+   "LK": {
+    "source": "geoBoundaries gbOpen OCHA ROAP, Survey Department of Sri Lanka",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/LKA/ADM3/",
+    "features": 330
+   },
+   "LT": {
+    "source": "geoBoundaries gbOpen digitized from https//commons.wikimedia.org/wiki/File",
+    "license": "Public Domain",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/LTU/ADM3/",
+    "features": 543
+   },
+   "LU": {
+    "source": "geoBoundaries gbOpen Le Gouvernement du Grande Duche de Luxembourg",
+    "license": "Public Domain",
+    "year": "2018",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/LUX/ADM3/",
+    "features": 102
+   },
+   "MG": {
+    "source": "geoBoundaries gbOpen Madagascar National Disaster Management Office (BNGRC), OCHA ROSA",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/MDG/ADM3/",
+    "features": 1579
+   },
+   "ML": {
+    "source": "geoBoundaries gbOpen DNCT - Direction Nationale des Colelctivités Territorielles, DNP - Direction Nationale de la Population, United Nations Office for the Coordination of Humanitarian Affairs, Mali",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/MLI/ADM3/",
+    "features": 701
+   },
+   "MM": {
+    "source": "geoBoundaries gbOpen The Myanmar Analytics Project, USAID",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+    "year": "2019",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/MMR/ADM3/",
+    "features": 330
+   },
+   "MW": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, MASDAP (Malawi Spatial Data Platform)",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2019",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/MWI/ADM3/",
+    "features": 245
+   },
+   "MY": {
+    "source": "geoBoundaries gbOpen Wikimedia Commons, geoBoundaries",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/MYS/ADM3/",
+    "features": 1859
+   },
+   "MZ": {
+    "source": "geoBoundaries gbOpen Mozambique INE (Instituto Nacional de Estatistica), OCHA ROSEA",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/MOZ/ADM3/",
+    "features": 411
+   },
+   "NE": {
+    "source": "geoBoundaries gbOpen OCHA ROWCA, Open Street Map",
+    "license": "Creative Commons Attribution 3.0 License",
+    "year": "2012",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/NER/ADM3/",
+    "features": 266
+   },
+   "NP": {
+    "source": "geoBoundaries gbOpen Open Data Nepal, Ministry of Federal Affairs and General Administration",
+    "license": "Creative Commons Attribution-ShareAlike 4.0 International License",
+    "year": "2019",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/NPL/ADM3/",
+    "features": 774
+   },
+   "NZ": {
+    "source": "geoBoundaries gbOpen NZ Stats",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/NZL/ADM3/",
+    "features": 245
+   },
+   "PA": {
+    "source": "geoBoundaries gbOpen Milton Solano, of the Smithsonian Tropical Research Institute, on ArcGIS online, GIS Laboratory. Smithsonian Tropical Research Institute, Panama, 2013",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2012",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/PAN/ADM3/",
+    "features": 632
+   },
+   "PG": {
+    "source": "geoBoundaries gbOpen Papua New Guinea National Statistics Office, OCHA ROAP",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2019",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/PNG/ADM3/",
+    "features": 326
+   },
+   "PH": {
+    "source": "geoBoundaries gbOpen National Mapping and Resource Information Authority (NAMRIA), Philippines Statistics Authority (PSA), OCHA Philippines",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/PHL/ADM3/",
+    "features": 1647
+   },
+   "PK": {
+    "source": "geoBoundaries gbOpen Pathways Data Pvt. Ltd., https//www.pbs.gov.pk/content/population-census/",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/PAK/ADM3/",
+    "features": 554
+   },
+   "PL": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Creative Commons Attribution-ShareAlike 2.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/POL/ADM3/",
+    "features": 2478
+   },
+   "PR": {
+    "source": "geoBoundaries gbOpen United States Census Bureau, MAF/TIGER",
+    "license": "Public Domain",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/PRI/ADM3/",
+    "features": 901
+   },
+   "PT": {
+    "source": "geoBoundaries gbOpen geoBoundaries, DG Territory",
+    "license": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/PRT/ADM3/",
+    "features": 2905
+   },
+   "RW": {
+    "source": "geoBoundaries gbOpen Open Data Rwanda",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "year": "2012",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/RWA/ADM3/",
+    "features": 416
+   },
+   "SB": {
+    "source": "geoBoundaries gbOpen POPGIS",
+    "license": "Other - Direct Permission",
+    "year": "2014",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/SLB/ADM3/",
+    "features": 183
+   },
+   "SE": {
+    "source": "geoBoundaries gbOpen Lantmateriet, Statistics Sweden",
+    "license": "Public Domain",
+    "year": "2018",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/SWE/ADM3/",
+    "features": 2652
+   },
+   "SK": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/SVK/ADM3/",
+    "features": 2927
+   },
+   "SN": {
+    "source": "geoBoundaries gbOpen Government of Senegal, OCHA ROWCA",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2019",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/SEN/ADM3/",
+    "features": 121
+   },
+   "SY": {
+    "source": "geoBoundaries gbOpen United Nations Cartographic Section (UNCS) and United Nations Office for the Coordination of Humanitarian Affairs (UNOCHA), OCHA ROSC",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/SYR/ADM3/",
+    "features": 272
+   },
+   "TN": {
+    "source": "geoBoundaries gbOpen OpenStreetMap, Wambacher",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2017",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/TUN/ADM3/",
+    "features": 2077
+   },
+   "TV": {
+    "source": "geoBoundaries gbOpen POPGIS",
+    "license": "Other - Direct Permission",
+    "year": "2014",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/TUV/ADM3/",
+    "features": 69
+   },
+   "TZ": {
+    "source": "geoBoundaries gbOpen OpenStreetMap",
+    "license": "Open Data Commons Open Database License 1.0",
+    "year": "2015",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/TZA/ADM3/",
+    "features": 3644
+   },
+   "UA": {
+    "source": "geoBoundaries gbOpen Open Street Map",
+    "license": "Creative Commons Attribution-ShareAlike 2.0",
+    "year": "2021",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/UKR/ADM3/",
+    "features": 10375
+   },
+   "UG": {
+    "source": "geoBoundaries gbOpen Wikimedia Commons, Wikimedia Commons",
+    "license": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/UGA/ADM3/",
+    "features": 137
+   },
+   "VU": {
+    "source": "geoBoundaries gbOpen POPGIS",
+    "license": "Other - Direct Permission",
+    "year": "2014",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/VUT/ADM3/",
+    "features": 621
+   },
+   "ZA": {
+    "source": "geoBoundaries gbOpen OCHA ROSEA, South African Municipal Demarcation Board",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/ZAF/ADM3/",
+    "features": 213
+   },
+   "ZW": {
+    "source": "geoBoundaries gbOpen OCHA ROSEA, Zimbabwe National Statistics Agency",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "year": "2020",
+    "url": "https://www.geoboundaries.org/api/current/gbOpen/ZWE/ADM3/",
+    "features": 1961
    }
   }
  },

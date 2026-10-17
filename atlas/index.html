@@ -9,8 +9,8 @@
   <title>AtlasOfWhen – kula ziemska zdarzeń</title>
   <link rel="preconnect" href="https://tiles.maps.eox.at" crossorigin />
   <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
-  <script type="module" crossorigin src="/demo/atlas/assets/index-C_o8bvH9.js"></script>
-  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-Cg9l_KAo.css">
+  <script type="module" crossorigin src="/demo/atlas/assets/index-mvNp-_bF.js"></script>
+  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-CLuE39ys.css">
 </head>
 <body>
   <a class="skip" href="#panel">Przejdź do panelu / Skip to panel</a>
@@ -30,10 +30,13 @@
         <input id="q" type="search" autocomplete="off" />
         <ul id="qres" role="listbox"></ul>
       </div>
+      <div id="tools" class="tools"></div>
+      <div id="personBar" class="personbar" hidden></div>
       <nav id="crumbs" aria-label="breadcrumb"></nav>
       <p class="muted small" data-i18n="click"></p>
       <div id="stats" aria-live="polite"></div>
       <fieldset id="cats"><legend class="sr" data-i18n="category"></legend></fieldset>
+      <details class="block" id="filtersBlock"><summary><span data-i18n="filters"></span> <b id="fbadge" class="badge"></b></summary><div id="filters"></div></details>
       <details class="block" open><summary data-i18n="layers"></summary><div id="layers"></div></details>
       <ol id="list"></ol>
       <details class="block"><summary data-i18n="sources"></summary><div id="attr" class="attr"></div></details>
@@ -56,6 +59,11 @@
       <select id="speed" aria-label="Speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select>
     </label>
   </footer>
+
+  <aside id="drawer" class="glass drawer" hidden aria-live="polite">
+    <button class="x" type="button" data-i18n-label="close">✕</button>
+    <div id="drawer-body"></div>
+  </aside>
 
   <div id="loader"><div class="orb"></div><p id="loadmsg"></p></div>
   <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
