@@ -1,1 +1,1 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[12.4527,41.903],[12.454,41.9039],[12.454,41.9028],[12.4527,41.903]]]},"properties":{"id":"VAT+00?","name_en":"Vatican City","name_pl":"Watykan","iso":"VA"}}]}
+{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[12.4527,41.903],[12.454,41.9039],[12.454,41.9028],[12.4527,41.903]]]},"properties":{"id":"VAT+00?","name_en":"Vatican City","name_pl":"Watykan","iso":"VA","wd":null}}]}
