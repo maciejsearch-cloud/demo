@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pl">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AtlasOfWhen – mapa zdarzeń</title><meta name="robots" content="noindex" />  <script type="module" crossorigin src="/demo/atlas/assets/index-Ba5I0kBy.js"></script>
+  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-Dy8j46bz.css">
+</head>
+<body>
+<div id="map"></div>
+<aside id="panel">
+  <div class="top"><b>AtlasOfWhen</b> <span class="beta">MVP</span>
+    <span class="lang"><button data-lang="pl">PL</button><button data-lang="en">EN</button></span></div>
+  <div id="crumbs"></div>
+  <div id="cats"></div>
+  <div class="time">
+    <div><span data-i18n="range"></span>: <b id="yrlabel"></b></div>
+    <input id="y0" type="range" min="1000" max="2026" value="1900" />
+    <input id="y1" type="range" min="1000" max="2026" value="2026" />
+    <button id="play">▶</button> <small class="muted" data-i18n="playhint"></small>
+  </div>
+  <div id="stats"></div>
+  <ol id="list"></ol>
+  <div class="attr" id="attr"></div>
+</aside>
+</body></html>
