@@ -9,8 +9,8 @@
   <title>AtlasOfWhen – kula ziemska zdarzeń</title>
   <link rel="preconnect" href="https://tiles.maps.eox.at" crossorigin />
   <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
-  <script type="module" crossorigin src="/demo/atlas/assets/index-CuxxF6B-.js"></script>
-  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-BozuRJW1.css">
+  <script type="module" crossorigin src="/demo/atlas/assets/index-C_o8bvH9.js"></script>
+  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-Cg9l_KAo.css">
 </head>
 <body>
   <a class="skip" href="#panel">Przejdź do panelu / Skip to panel</a>
@@ -22,6 +22,7 @@
     <header class="brand">
       <div class="logo" aria-hidden="true"></div>
       <div><h1>AtlasOfWhen</h1><small class="muted">beta · open data</small></div>
+      <button id="share" class="share" type="button" data-i18n-label="share"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
       <div class="lang" role="group" aria-label="Language"><button data-lang="pl">PL</button><button data-lang="en">EN</button></div>
     </header>
     <div id="panel-body">
@@ -57,5 +58,6 @@
   </footer>
 
   <div id="loader"><div class="orb"></div><p id="loadmsg"></p></div>
+  <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
 </body>
 </html>
