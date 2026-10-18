@@ -106,6 +106,26 @@ def forward(layers: list[dict], flat: np.ndarray, x: np.ndarray, shape: list[int
     return h
 
 
+def n_params(layers: list[dict], shape: list[int]) -> int:
+    """Liczba wag oczekiwana przez bieżącą architekturę (bez pobierania wag)."""
+    shp, n = list(shape), 0
+    for L in layers:
+        t = L["t"]
+        if t == "conv":
+            n += 9 * shp[-1] * L["f"] + L["f"]
+            shp = [shp[0], shp[1], L["f"]] if L.get("same") else [shp[0] - 2, shp[1] - 2, L["f"]]
+        elif t == "pool":
+            shp = [shp[0] // 2, shp[1] // 2, shp[2]]
+        elif t == "flatten":
+            shp = [int(np.prod(shp))]
+        elif t == "dense":
+            n += shp[-1] * L["u"] + L["u"]
+            shp = [*shp[:-1], L["u"]]
+        elif t == "bn":
+            n += 4 * shp[-1]
+    return n
+
+
 def verify(row: dict, meta: dict, sets: dict, local: bool) -> dict:
     m = row["model"]
     md = meta[m]
