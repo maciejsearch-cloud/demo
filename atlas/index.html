@@ -9,8 +9,8 @@
   <title>AtlasOfWhen – kula ziemska zdarzeń</title>
   <link rel="preconnect" href="https://tiles.maps.eox.at" crossorigin />
   <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
-  <script type="module" crossorigin src="/demo/atlas/assets/index-mvNp-_bF.js"></script>
-  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-CLuE39ys.css">
+  <script type="module" crossorigin src="/demo/atlas/assets/index-DTcGEaHH.js"></script>
+  <link rel="stylesheet" crossorigin href="/demo/atlas/assets/index-B3PCEc__.css">
 </head>
 <body>
   <a class="skip" href="#panel">Przejdź do panelu / Skip to panel</a>
@@ -32,6 +32,7 @@
       </div>
       <div id="tools" class="tools"></div>
       <div id="personBar" class="personbar" hidden></div>
+      <div id="results" class="results" hidden></div>
       <nav id="crumbs" aria-label="breadcrumb"></nav>
       <p class="muted small" data-i18n="click"></p>
       <div id="stats" aria-live="polite"></div>
@@ -65,6 +66,23 @@
     <div id="drawer-body"></div>
   </aside>
 
+  <section id="hero" hidden aria-labelledby="heroT">
+    <form id="heroForm" class="glass" role="search" autocomplete="off" onsubmit="return false">
+      <div class="logo" aria-hidden="true"></div>
+      <h2 id="heroT" data-i18n="heroT">Czego szukasz?</h2>
+      <p class="muted" data-i18n="heroSub"></p>
+      <div class="hq"><input id="hq" type="search" enterkeyhint="search" placeholder="np. Napoleon, Gołdap, powódź 1997…" aria-label="Czego szukasz?" /><button type="submit" class="btn primary" data-i18n="go"></button></div>
+      <ul id="hres" role="listbox"></ul>
+      <div class="hrow">
+        <label><span data-i18n="from"></span> <input id="hy0" inputmode="numeric" pattern="-?[0-9]{1,4}" placeholder="1900" size="6" /></label>
+        <label><span data-i18n="to"></span> <input id="hy1" inputmode="numeric" pattern="-?[0-9]{1,4}" placeholder="2026" size="6" /></label>
+      </div>
+      <div id="hcats" class="chips"></div>
+      <div id="hex" class="chips hexs"></div>
+      <button type="button" id="heroSkip" class="linkbtn" data-i18n="browse"></button>
+    </form>
+  </section>
+  <script>/* search first: show the form before the app bundle arrives (plain visits only) */ if (!location.hash.slice(1) && !location.search) document.getElementById('hero').hidden = false</script>
   <div id="loader"><div class="orb"></div><p id="loadmsg"></p></div>
   <div id="toast" class="toast glass" role="status" aria-live="polite"></div>
 </body>
