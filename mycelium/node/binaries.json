@@ -1,33 +1,33 @@
 {
- "tag": "node-20261019-0715-1b4fdb3",
- "built": "2026-10-19T07:15:50.128210+00:00",
- "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/39214266316",
- "pyz_sha256": "956b680bfdf9b6f62e9fc4242cac7aac1875f48b3ff17ccacd000c4291068bf3",
+ "tag": "node-20261019-0817-adb513a",
+ "built": "2026-10-19T08:17:48.699019+00:00",
+ "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/39221124835",
+ "pyz_sha256": "d5b8f32eaed32ed4fab07020d94f86da715425ee06aae4d1dc6a25203aca8616",
  "files": [
   {
    "os": "windows",
    "name": "MyceliumNode.exe",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261019-0715-1b4fdb3/MyceliumNode.exe",
-   "sha256": "af51466ee5bb9319bfd0595b4923f66ea2e0e3db091d6f08220621a9a73b3ac6",
-   "bytes": 149061076
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261019-0817-adb513a/MyceliumNode.exe",
+   "sha256": "64cd42061f4550b423073b07e92cb842634d38848f086b73d60d652d44078c7d",
+   "bytes": 149062690
   },
   {
    "os": "linux",
    "name": "MyceliumNode-linux-x64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261019-0715-1b4fdb3/MyceliumNode-linux-x64",
-   "sha256": "0dd17c9dca2ad8f3c27cf8ca256c4cdf59af6ffdce0f324cedcd336b566ba801",
-   "bytes": 241587648
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261019-0817-adb513a/MyceliumNode-linux-x64",
+   "sha256": "4d9225c89d7556643a1484e332cda5cc4393c763b9a4a3f448e0a2c71f20b128",
+   "bytes": 241588920
   },
   {
    "os": "macos",
    "name": "MyceliumNode-macos-arm64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261019-0715-1b4fdb3/MyceliumNode-macos-arm64",
-   "sha256": "8495b2a887ffbec09b5a8fcb528b854a40f8d850b6d8dfd815340ceb72ca997a",
-   "bytes": 160658768
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261019-0817-adb513a/MyceliumNode-macos-arm64",
+   "sha256": "e4ff5e196bf4508e7c9951b05108462237f3fa0e869de15f3309ebb7bef1430d",
+   "bytes": 160660432
   }
  ],
  "smoke": {
-  "macos": "ok (20 s)",
+  "macos": "ok (30 s)",
   "linux": "ok (20 s)",
   "windows": "ok (22 s)"
  }
