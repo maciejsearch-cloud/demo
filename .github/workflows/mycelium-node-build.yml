@@ -1,0 +1,129 @@
+name: Mycelium AI – węzeł na PC (Windows / Linux / macOS)
+
+# Buduje samodzielne pliki wykonywalne węzła z opublikowanego mycelium/node/mycelium-node.pyz (PyInstaller,
+# PyTorch CPU wbudowany – bez instalacji Pythona), uruchamia każdy z nich (start + połączenie z grzybnią
+# + lokalna strona stanu) i publikuje jako wydanie GitHub z sumami SHA-256 (mycelium/node/binaries.json).
+on:
+  push:
+    branches: [main]
+    paths: ["mycelium/node/mycelium-node.pyz"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: node-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: windows-latest, plat: windows, file: MyceliumNode.exe, base: MyceliumNode }
+          - { os: ubuntu-22.04, plat: linux, file: MyceliumNode-linux-x64, base: MyceliumNode-linux-x64 }
+          - { os: macos-14, plat: macos, file: MyceliumNode-macos-arm64, base: MyceliumNode-macos-arm64 }
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: mycelium/node
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Zależności (PyTorch CPU)
+        shell: bash
+        run: |
+          if [ "${{ matrix.plat }}" = macos ]; then python -m pip install -q torch; else python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu; fi
+          python -m pip install -q websockets pyinstaller
+      - name: Budowanie
+        shell: bash
+        run: |
+          python -c "import zipfile; zipfile.ZipFile('mycelium/node/mycelium-node.pyz').extractall('build_src')"
+          printf 'from iot_mycelium.mesh.node import main\n\nmain()\n' > entry.py
+          pyinstaller --onefile --noconfirm --name "${{ matrix.base }}" --paths build_src --collect-submodules iot_mycelium --exclude-module tkinter entry.py
+          ls -la dist
+      - name: Test startu (model, połączenie z grzybnią, strona stanu)
+        shell: bash
+        env:
+          MYC_NO_PRESENCE: "1"
+          PYTHONUTF8: "1"
+        run: |
+          python - "dist/${{ matrix.file }}" "${{ matrix.plat }}" <<'PY'
+          import json, subprocess, sys, time, urllib.request
+          exe, plat = sys.argv[1], sys.argv[2]
+          h = subprocess.run([exe, "--help"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+          assert h.returncode == 0 and "--join" in h.stdout, h.stdout + h.stderr
+          p = subprocess.Popen([exe, "--join", "--name", f"ci-{plat}", "--threads", "2", "--no-lm", "--status-port", "8765"])
+          t0, st = time.time(), None
+          try:
+              while time.time() - t0 < 1500:
+                  time.sleep(10)
+                  assert p.poll() is None, f"węzeł zakończył się kodem {p.returncode}"
+                  try:
+                      st = json.loads(urllib.request.urlopen("http://127.0.0.1:8765/status.json", timeout=5).read())
+                  except OSError:
+                      continue
+                  if st.get("connected"):
+                      break
+              assert st and st.get("connected"), f"brak połączenia: {st}"
+              print("OK", json.dumps({k: st.get(k) for k in ("connected", "peers", "nodes_online", "backend", "label")}))
+              open("smoke.json", "w").write(json.dumps({"plat": plat, "ok": True, "s": round(time.time() - t0), "nodes_online": st.get("nodes_online")}))
+          finally:
+              p.terminate()
+              try:
+                  p.wait(30)
+              except Exception:
+                  p.kill()
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.plat }}
+          path: |
+            dist/${{ matrix.file }}
+            smoke.json
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: art
+      - name: Wydanie + sumy SHA-256
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          tag="node-$(date -u +%Y%m%d-%H%M)-${GITHUB_SHA::7}"
+          mkdir -p out
+          cp art/windows/dist/MyceliumNode.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 out/
+          (cd out && sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt)
+          gh release create "$tag" out/* --title "Mycelium AI – węzeł na PC ($tag)" --latest \
+            --notes "Węzeł grzybni Mycelium AI (model językowy na CPU). Zbudowany z mycelium/node/mycelium-node.pyz w ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}; każdy plik uruchomiony w CI (połączenie z grzybnią). Pliki nie są podpisane certyfikatem – sprawdź SHA256SUMS.txt."
+          python3 - "$tag" <<'PY'
+          import hashlib, json, os, sys, glob
+          tag = sys.argv[1]
+          repo = os.environ["GITHUB_REPOSITORY"]
+          plat = {"MyceliumNode.exe": "windows", "MyceliumNode-linux-x64": "linux", "MyceliumNode-macos-arm64": "macos"}
+          files = []
+          for n, o in plat.items():
+              b = open(f"out/{n}", "rb").read()
+              files.append({"os": o, "name": n, "url": f"https://github.com/{repo}/releases/download/{tag}/{n}", "sha256": hashlib.sha256(b).hexdigest(), "bytes": len(b)})
+          smoke = {}
+          for f in glob.glob("art/*/smoke.json"):
+              s = json.load(open(f)); smoke[s["plat"]] = f"ok ({s['s']} s)"
+          pyz = hashlib.sha256(open("mycelium/node/mycelium-node.pyz", "rb").read()).hexdigest()
+          from datetime import datetime, timezone
+          json.dump({"tag": tag, "built": datetime.now(timezone.utc).isoformat(), "run_url": f"https://github.com/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
+                     "pyz_sha256": pyz, "files": files, "smoke": smoke}, open("mycelium/node/binaries.json", "w"), indent=1)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mycelium/node/binaries.json
+          git commit -m "Mycelium AI: węzeł na PC $tag (sumy SHA-256)"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

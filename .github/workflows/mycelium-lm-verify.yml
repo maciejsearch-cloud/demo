@@ -1,0 +1,55 @@
+name: Mycelium AI – niezależna ocena modelu językowego
+
+# Zaufany weryfikator (inna maszyna niż węzły): gdy w bazie czeka kandydat modelu językowego,
+# przelicza od zera stały test (perpleksja + trafność wyboru definicji) opublikowanym węzłem
+# mycelium/node/mycelium-node.pyz i zgłasza wynik (myc_reeval_trusted_lm). Bez kandydata: koniec po kilku sekundach.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lm-verify
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Czy czeka kandydat?
+        id: q
+        run: |
+          n=$(curl -fsS "https://agortpieeygmcttjwjfx.supabase.co/rest/v1/myc_candidates?model=eq.lm&status=eq.pending&select=id" \
+                -H "apikey: sb_publishable_O6NCXONs9ZOb13j_od4mnw_KqJlH98P" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
+          echo "n=$n" >> "$GITHUB_OUTPUT"; echo "kandydaci: $n"
+      - if: steps.q.outputs.n != '0'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            mycelium/node
+            mycelium/data/lm
+      - if: steps.q.outputs.n != '0'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - if: steps.q.outputs.n != '0'
+        run: python -m pip install -q torch websockets --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
+      - if: steps.q.outputs.n != '0'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/mycelium/qwen2.5-0.5b-instruct.safetensors
+          key: qwen25-05b-fdf756fa7fcb
+      - if: steps.q.outputs.n != '0'
+        name: Ocena i zgłoszenie
+        env:
+          MYC_LM_VERIFIER_KEY: ${{ secrets.MYC_LM_VERIFIER_KEY }}
+        run: MYC_LM_DATA="$PWD/mycelium/data/lm" python mycelium/node/mycelium-node.pyz --verify-lm --post --json lm-verify.json
+      - if: steps.q.outputs.n != '0'
+        name: Podsumowanie
+        run: |
+          echo '### Ocena modelu językowego' >> "$GITHUB_STEP_SUMMARY"
+          python3 -c "import json;[print(f\"- v{r['version']}: perpleksja {r['ppl']} (deklaracja {r.get('ppl_claimed')}), trafność {r['acc']} (deklaracja {r.get('acc_claimed')}), {r['s']} s → {r.get('db')}\") for r in json.load(open('lm-verify.json'))]" >> "$GITHUB_STEP_SUMMARY"
