@@ -47,7 +47,7 @@ jobs:
         name: Ocena i zgłoszenie
         env:
           MYC_LM_VERIFIER_KEY: ${{ secrets.MYC_LM_VERIFIER_KEY }}
-        run: MYC_LM_DATA="$PWD/mycelium/data/lm" python mycelium/node/mycelium-node.pyz --verify-lm --post --json lm-verify.json
+        run: MYC_LM_DATA="$PWD/mycelium/data/lm" python mycelium/node/mycelium-node.pyz --verify-lm --post --dtype f32 --json lm-verify.json
       - if: steps.q.outputs.n != '0'
         name: Podsumowanie
         run: |
