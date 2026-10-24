@@ -1,37 +1,37 @@
 {
- "tag": "node-20261024-2104-3cb5a7b",
- "built": "2026-10-24T21:04:38.055196+00:00",
- "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/40132146702",
- "pyz_sha256": "bf87ec72cc249c2286c04aaffba398665fb436e8b56456a0cfd6b3059078b39f",
+ "tag": "node-20261024-2121-85c2ed4",
+ "built": "2026-10-24T21:21:29.741810+00:00",
+ "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/40133438617",
+ "pyz_sha256": "dda8cff29bf96713d7dfb66e0a62f721449a168236184d1ce91aaa7da426e0c2",
  "files": [
   {
    "os": "windows",
    "name": "MyceliumNode.exe",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2104-3cb5a7b/MyceliumNode.exe",
-   "sha256": "bde5843182c9383d1d97216fba6d3e91f2c60fa46e153c65fc1b2565e91d9bea",
-   "bytes": 162618708
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2121-85c2ed4/MyceliumNode.exe",
+   "sha256": "14f0dd63a4d770c3fcec95c31bd8548b7c975ecc61645bb09a89dc8374c87768",
+   "bytes": 162793163
   },
   {
    "os": "linux",
    "name": "MyceliumNode-linux-x64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2104-3cb5a7b/MyceliumNode-linux-x64",
-   "sha256": "25f2faca69f8c3332c0d404cd8b7492dc1fab1e8d9192790464d5d498ca1aaa2",
-   "bytes": 256263672
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2121-85c2ed4/MyceliumNode-linux-x64",
+   "sha256": "4045262132d975580d4f37732e7f3c27691135842d21336119b28e6853b1f3ef",
+   "bytes": 256484328
   },
   {
    "os": "macos",
    "name": "MyceliumNode-macos-arm64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2104-3cb5a7b/MyceliumNode-macos-arm64",
-   "sha256": "01e4d2cf025ceb2caad639ab2fe5a48e3c5e686e2aaf4c4e86207b1398b63eec",
-   "bytes": 174327808
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2121-85c2ed4/MyceliumNode-macos-arm64",
+   "sha256": "53c3a68ac93e0d3d4dba7c96ea72036b121de6eac5c4be917dd8ded190d39192",
+   "bytes": 174493600
   }
  ],
  "smoke": {
   "macos": "ok (20 s)",
   "linux": "ok (20 s)",
-  "windows": "ok (22 s)"
+  "windows": "ok (20 s)"
  },
- "sums_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2104-3cb5a7b/SHA256SUMS.txt",
- "sig_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2104-3cb5a7b/SHA256SUMS.txt.sigstore.json",
+ "sums_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2121-85c2ed4/SHA256SUMS.txt",
+ "sig_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2121-85c2ed4/SHA256SUMS.txt.sigstore.json",
  "workflow": "https://github.com/maciejsearch-cloud/demo/.github/workflows/mycelium-node-build.yml"
 }
