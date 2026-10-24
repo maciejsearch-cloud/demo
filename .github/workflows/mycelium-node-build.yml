@@ -38,13 +38,13 @@ jobs:
         shell: bash
         run: |
           if [ "${{ matrix.plat }}" = macos ]; then python -m pip install -q torch; else python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu; fi
-          python -m pip install -q websockets pyinstaller
+          python -m pip install -q websockets pyinstaller sigstore
       - name: Budowanie
         shell: bash
         run: |
           python -c "import zipfile; zipfile.ZipFile('mycelium/node/mycelium-node.pyz').extractall('build_src')"
           printf 'from iot_mycelium.mesh.node import main\n\nmain()\n' > entry.py
-          pyinstaller --onefile --noconfirm --name "${{ matrix.base }}" --paths build_src --collect-submodules iot_mycelium --exclude-module tkinter entry.py
+          pyinstaller --onefile --noconfirm --name "${{ matrix.base }}" --paths build_src --collect-submodules iot_mycelium --collect-all sigstore --collect-all sigstore_protobuf_specs --collect-all tuf --collect-data certifi --exclude-module tkinter entry.py
           ls -la dist
       - name: Test startu (model, połączenie z grzybnią, strona stanu)
         shell: bash
@@ -57,6 +57,9 @@ jobs:
           exe, plat = sys.argv[1], sys.argv[2]
           h = subprocess.run([exe, "--help"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
           assert h.returncode == 0 and "--join" in h.stdout, h.stdout + h.stderr
+          if "--selfupdate-selftest" in open("build_src/iot_mycelium/mesh/node.py", encoding="utf-8").read():
+              st = subprocess.run([exe, "--selfupdate-selftest"], capture_output=True, text=True, timeout=300)
+              assert st.returncode == 0, "brak biblioteki sigstore w binarium: " + st.stdout + st.stderr
           p = subprocess.Popen([exe, "--join", "--name", f"ci-{plat}", "--threads", "2", "--no-lm", "--status-port", "8765"])
           t0, st = time.time(), None
           try:
