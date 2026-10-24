@@ -38,7 +38,7 @@ jobs:
         shell: bash
         run: |
           if [ "${{ matrix.plat }}" = macos ]; then python -m pip install -q torch; else python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu; fi
-          python -m pip install -q websockets pyinstaller sigstore
+          python -m pip install -q websockets pyinstaller sigstore psutil
       - name: Budowanie
         shell: bash
         run: |
@@ -123,7 +123,7 @@ jobs:
           cp art/windows/dist/MyceliumNode.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 out/
           cp mycelium/node/mycelium-node.pyz out/
           (cd out && sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt)
-          cosign sign-blob --yes --bundle out/SHA256SUMS.txt.sigstore.json out/SHA256SUMS.txt
+          cosign sign-blob --yes --new-bundle-format --bundle out/SHA256SUMS.txt.sigstore.json out/SHA256SUMS.txt
           gh release create "$tag" out/* --title "Mycelium AI – węzeł na PC ($tag)" --latest \
             --notes "Węzeł grzybni Mycelium AI (model językowy na CPU). Zbudowany z mycelium/node/mycelium-node.pyz w ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}; każdy plik uruchomiony w CI (połączenie z grzybnią). Weryfikacja: gh attestation verify PLIK -R ${GITHUB_REPOSITORY} albo cosign verify-blob --bundle SHA256SUMS.txt.sigstore.json --certificate-identity-regexp '^https://github.com/${GITHUB_REPOSITORY}/.github/workflows/mycelium-node-build.yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com SHA256SUMS.txt, potem sha256sum -c SHA256SUMS.txt. Brak certyfikatu wydawcy Windows/Apple (SmartScreen/Gatekeeper ostrzeże)."
           python3 - "$tag" <<'PY'
