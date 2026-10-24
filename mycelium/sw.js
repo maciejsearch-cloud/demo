@@ -1,9 +1,9 @@
 // Service worker Mycelium AI: instalacja jako aplikacja i praca offline (powłoka strony).
 // Strategia: sieć najpierw (zawsze świeża wersja), pamięć podręczna tylko gdy brak sieci. Dane (Supabase) nie są cache'owane.
-const CACHE = 'myc-shell-v1'
+const CACHE = 'myc-shell-v2'
 self.addEventListener('install', (e) => {
   self.skipWaiting()
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', './favicon.svg', './manifest.webmanifest'])).catch(() => undefined))
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(['./', './favicon.svg', './icon.svg', './icon-192.png', './manifest.webmanifest'])).catch(() => undefined))
 })
 self.addEventListener('activate', (e) => {
   e.waitUntil(
