@@ -1,8 +1,10 @@
 name: Mycelium AI – niezależna ocena modelu językowego
 
-# Zaufany weryfikator (inna maszyna niż węzły): gdy w bazie czeka kandydat modelu językowego,
-# przelicza od zera stały test (perpleksja + trafność wyboru definicji) opublikowanym węzłem
-# mycelium/node/mycelium-node.pyz i zgłasza wynik (myc_reeval_trusted_lm). Bez kandydata: koniec po kilku sekundach.
+# Zaufany weryfikator (inna maszyna niż węzły): gdy w bazie czeka kandydat modelu językowego albo bieżąca wersja
+# nie ma jeszcze wyniku na aktualnym zbiorze testowym (np. po powiększeniu do 2000 pytań), przelicza od zera
+# stały test (perpleksja + trafność wyboru definicji) opublikowanym węzłem mycelium/node/mycelium-node.pyz.
+# Pytania dzielone na 8 równoległych odłamków (każdy ~5–8 min), ostatni krok składa wynik i zgłasza go do bazy
+# (myc_reeval_trusted_lm / myc_rebase_lm). Bez pracy: koniec po kilku sekundach.
 on:
   schedule:
     - cron: "*/15 * * * *"
@@ -15,41 +17,80 @@ concurrency:
   group: lm-verify
   cancel-in-progress: false
 
+env:
+  SB: https://agortpieeygmcttjwjfx.supabase.co/rest/v1
+  APIKEY: sb_publishable_O6NCXONs9ZOb13j_od4mnw_KqJlH98P
+
 jobs:
-  verify:
+  check:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 3
+    outputs:
+      n: ${{ steps.q.outputs.n }}
     steps:
-      - name: Czy czeka kandydat?
+      - name: Czy jest coś do oceny?
         id: q
         run: |
-          n=$(curl -fsS "https://agortpieeygmcttjwjfx.supabase.co/rest/v1/myc_candidates?model=eq.lm&status=eq.pending&select=id" \
-                -H "apikey: sb_publishable_O6NCXONs9ZOb13j_od4mnw_KqJlH98P" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
-          echo "n=$n" >> "$GITHUB_OUTPUT"; echo "kandydaci: $n"
-      - if: steps.q.outputs.n != '0'
-        uses: actions/checkout@v4
+          c=$(curl -fsS "$SB/myc_candidates?model=eq.lm&status=eq.pending&select=id" -H "apikey: $APIKEY" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
+          es=$(curl -fsS "$SB/myc_eval_sets?model=eq.lm&select=sha" -H "apikey: $APIKEY" | python3 -c "import json,sys; print(json.load(sys.stdin)[0]['sha'])")
+          b=$(curl -fsS "$SB/myc_models?model=eq.lm&order=version.desc&limit=1&select=meta" -H "apikey: $APIKEY" | python3 -c "import json,sys; r=json.load(sys.stdin); print(int(bool(r) and (r[0]['meta'] or {}).get('eval_sha') != '$es'))")
+          echo "n=$((c + b))" >> "$GITHUB_OUTPUT"; echo "kandydaci: $c, ocena bazowa: $b"
+
+  shard:
+    needs: check
+    if: needs.check.outputs.n != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: true
+      matrix:
+        i: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
         with:
           sparse-checkout: |
             mycelium/node
             mycelium/data/lm
-      - if: steps.q.outputs.n != '0'
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - if: steps.q.outputs.n != '0'
-        run: python -m pip install -q torch websockets --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
-      - if: steps.q.outputs.n != '0'
-        uses: actions/cache@v4
+      - run: python -m pip install -q torch websockets --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
+      - uses: actions/cache@v4
         with:
           path: ~/.cache/mycelium/qwen2.5-0.5b-instruct.safetensors
           key: qwen25-05b-fdf756fa7fcb
-      - if: steps.q.outputs.n != '0'
-        name: Ocena i zgłoszenie
+      - name: Ocena odłamka ${{ matrix.i }}/8
+        run: MYC_LM_DATA="$PWD/mycelium/data/lm" python mycelium/node/mycelium-node.pyz --verify-lm --dtype f32 --shard ${{ matrix.i }}/8 --json part-${{ matrix.i }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ matrix.i }}
+          path: part-${{ matrix.i }}.json
+
+  combine:
+    needs: shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: mycelium/node
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q torch websockets --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: part-*
+          merge-multiple: true
+      - name: Złożenie wyniku i zgłoszenie
         env:
           MYC_LM_VERIFIER_KEY: ${{ secrets.MYC_LM_VERIFIER_KEY }}
-        run: MYC_LM_DATA="$PWD/mycelium/data/lm" python mycelium/node/mycelium-node.pyz --verify-lm --post --dtype f32 --json lm-verify.json
-      - if: steps.q.outputs.n != '0'
-        name: Podsumowanie
+        run: python mycelium/node/mycelium-node.pyz --verify-lm --combine part-*.json --post --json lm-verify.json
+      - name: Podsumowanie
         run: |
-          echo '### Ocena modelu językowego' >> "$GITHUB_STEP_SUMMARY"
-          python3 -c "import json;[print(f\"- v{r['version']}: perpleksja {r['ppl']} (deklaracja {r.get('ppl_claimed')}), trafność {r['acc']} (deklaracja {r.get('acc_claimed')}), {r['s']} s → {r.get('db')}\") for r in json.load(open('lm-verify.json'))]" >> "$GITHUB_STEP_SUMMARY"
+          echo '### Ocena modelu językowego (8 odłamków)' >> "$GITHUB_STEP_SUMMARY"
+          python3 -c "import json;[print(f\"- {r['kind']} v{r['version']}: perpleksja {r['ppl']} (zapisane/deklaracja {r.get('ppl_claimed', r.get('ppl_stored'))}), trafność {r['acc']} = {r['correct']}/{r['n']} (zapisane/deklaracja {r.get('acc_claimed', r.get('acc_stored'))}), {r['s']} s → {r.get('db')}\") for r in json.load(open('lm-verify.json'))]" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lm-verify
+          path: lm-verify.json

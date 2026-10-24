@@ -5,6 +5,12 @@
   "e138c56e16acc8724e851c206f2b2f586e3cdf511105b1d8a81d90b6d374248c",
   "298e4a6e137187f2024af78a6c4fa770add505e519280583f7e2d2cec8a26f62"
  ],
+ "eval_parquet_sha256": [
+  "772b50aff9ff58ea037955325573c92c0e811e44ca38d72d3570c2f616f9b37e",
+  "a6c4181c7446328a44aaf06d5ebaf086726a537a75cf448ad435105d0ab748c3",
+  "6cd8e26a8502b5195dae7dd019006becccc5da17c73852f569972d2dc519fee5",
+  "68ad1daa29e28c5f9b3cdf60d3910d63136b36a0fe45ad97ceb2d2ce348211d8"
+ ],
  "tokenizer": "Qwen/Qwen2.5-0.5B-Instruct@7ae557604adf67be50417f59c2c2f167def9a775",
  "split": "sha1(tytuł) % 1000 < 10 → tylko test",
  "shards": 400,
@@ -2015,11 +2021,12 @@
  ],
  "eval": {
   "name": "eval.bin",
-  "sha256": "4e7b2048dff5207939345f2f32c82b0a48f664cac0d30680e91ecd0100aae79c",
-  "bytes": 483817,
+  "sha256": "9bebb6f48df885029b02a0e97df6a1371458877b8608d9a4c1e1311f4bc66a0a",
+  "bytes": 3338068,
   "n_ppl": 192,
-  "n_mc": 250,
-  "t": 80
+  "n_mc": 2000,
+  "t": 80,
+  "version": 2
  },
  "system_prompt": "Jesteś Mycelium AI, pomocnym asystentem działającym na grzybni przeglądarek wolontariuszy. Odpowiadaj po polsku, krótko i życzliwie.  Jeśli nie masz pewności, powiedz to."
 }
