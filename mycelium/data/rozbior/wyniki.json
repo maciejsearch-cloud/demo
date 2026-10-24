@@ -1,0 +1,117 @@
+{
+ "generated_at": "2026-10-25T01:50:00+02:00",
+ "baseline": {
+  "name": "spaCy pl_core_news_sm 3.8.0",
+  "license": "GPL-3.0",
+  "test": {
+   "role_f1": 0.7439,
+   "role_p": 0.7341,
+   "role_r": 0.754,
+   "role_n": 11310,
+   "upos": 0.9535,
+   "feats": 0.8251,
+   "lemma": 0.9313,
+   "uas": 0.8693,
+   "las": 0.7643,
+   "part": 0.8539,
+   "attr_head": 0.7759,
+   "clause_f1": 0.8208,
+   "frame_tam": 0.8032,
+   "n_sent": 3942,
+   "n_tok": 46728
+  },
+  "by_tb": {
+   "pdb": {
+    "role_f1": 0.7339,
+    "role_p": 0.7188,
+    "role_r": 0.7497,
+    "role_n": 7535,
+    "upos": 0.9553,
+    "feats": 0.8773,
+    "lemma": 0.9343,
+    "uas": 0.8617,
+    "las": 0.7759,
+    "part": 0.8591,
+    "attr_head": 0.7648,
+    "clause_f1": 0.7886,
+    "frame_tam": 0.8199,
+    "n_sent": 2215,
+    "n_tok": 33616
+   },
+   "lfg": {
+    "role_f1": 0.7644,
+    "role_p": 0.7661,
+    "role_r": 0.7626,
+    "role_n": 3775,
+    "upos": 0.949,
+    "feats": 0.6913,
+    "lemma": 0.9236,
+    "uas": 0.8887,
+    "las": 0.7346,
+    "part": 0.8401,
+    "attr_head": 0.8295,
+    "clause_f1": 0.8829,
+    "frame_tam": 0.7723,
+    "n_sent": 1727,
+    "n_tok": 13112
+   }
+  }
+ },
+ "trained": {
+  "file": "rb-v0-q8.bin",
+  "sha256": "f324f3480d513ba69b1e0e5e9a7d5a5434e3b810f22f402b92f2798919431bf2",
+  "test": {
+   "role_f1": 0.757,
+   "role_p": 0.7601,
+   "role_r": 0.754,
+   "role_n": 11310,
+   "upos": 0.9711,
+   "feats": 0.7761,
+   "lemma": 0.9019,
+   "uas": 0.8787,
+   "las": 0.7858,
+   "part": 0.8795,
+   "attr_head": 0.8226,
+   "clause_f1": 0.8668,
+   "frame_tam": 0.8016,
+   "n_sent": 3942,
+   "n_tok": 46728
+  },
+  "by_tb": {
+   "pdb": {
+    "role_f1": 0.7415,
+    "role_p": 0.7399,
+    "role_r": 0.7432,
+    "role_n": 7535,
+    "upos": 0.9714,
+    "feats": 0.811,
+    "lemma": 0.8977,
+    "uas": 0.8687,
+    "las": 0.7944,
+    "part": 0.886,
+    "attr_head": 0.8172,
+    "clause_f1": 0.8459,
+    "frame_tam": 0.8173,
+    "n_sent": 2215,
+    "n_tok": 33616
+   },
+   "lfg": {
+    "role_f1": 0.7886,
+    "role_p": 0.802,
+    "role_r": 0.7756,
+    "role_n": 3775,
+    "upos": 0.9702,
+    "feats": 0.6868,
+    "lemma": 0.9127,
+    "uas": 0.9045,
+    "las": 0.7637,
+    "part": 0.8625,
+    "attr_head": 0.8484,
+    "clause_f1": 0.9053,
+    "frame_tam": 0.7723,
+    "n_sent": 1727,
+    "n_tok": 13112
+   }
+  }
+ }
+}
