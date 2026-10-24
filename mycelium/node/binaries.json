@@ -1,42 +1,42 @@
 {
- "tag": "node-20261024-2220-13498dc",
- "built": "2026-10-24T22:20:36.098423+00:00",
- "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/40137726620",
- "pyz_sha256": "9c4f5179325336cea182527c7259464f4217005b5f83b3953311b1f5e7eb3e25",
+ "tag": "node-20261024-2237-eae5c39",
+ "built": "2026-10-24T22:38:17.785718+00:00",
+ "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/40138967474",
+ "pyz_sha256": "480e186069b56d6fe32b77a4ef590dee3503f51183f5e83bace9fb4baff07007",
  "files": [
   {
    "os": "windows",
    "name": "MyceliumNode.exe",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2220-13498dc/MyceliumNode.exe",
-   "sha256": "d988f44af36b5d8ccb69ad908338c68c53e25abc3942d3968e7b73e4fc099fab",
-   "bytes": 162812546
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2237-eae5c39/MyceliumNode.exe",
+   "sha256": "8963c48a5f78f28a69dff4818ce0f62376709f03a126d2e51d998a5a829d99dc",
+   "bytes": 162816633
   },
   {
    "os": "windows-directml",
    "name": "MyceliumNode-DirectML.exe",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2220-13498dc/MyceliumNode-DirectML.exe",
-   "sha256": "148eeb07a268f4201c38b70fee53b1293e12ebac16c6c09f67f2b337f8c3abb8",
-   "bytes": 165290317
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2237-eae5c39/MyceliumNode-DirectML.exe",
+   "sha256": "a54e7230d6362d69533b73578738fd0ca7dee092a36028bdbce6028435d205ba",
+   "bytes": 165291625
   },
   {
    "os": "linux",
    "name": "MyceliumNode-linux-x64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2220-13498dc/MyceliumNode-linux-x64",
-   "sha256": "98ada7e004a656000edf67e596592cf8648d3695209302d4bf256db2f53b2825",
-   "bytes": 256501448
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2237-eae5c39/MyceliumNode-linux-x64",
+   "sha256": "4d988a36a780d3c0494478e006f446d9562e971990e5b45494841505ee7cfe3d",
+   "bytes": 256506312
   },
   {
    "os": "macos",
    "name": "MyceliumNode-macos-arm64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2220-13498dc/MyceliumNode-macos-arm64",
-   "sha256": "09babcd50be2826092bc763fa62cb4cc0af874e260d436ef212bbd2bc65fdcdc",
-   "bytes": 174512656
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2237-eae5c39/MyceliumNode-macos-arm64",
+   "sha256": "73705105a1be1bc59454c32dfcb189618d412e802e29163a5a0c8979f9d2c297",
+   "bytes": 174516704
   }
  ],
  "smoke": {
   "macos": "ok (30 s)",
   "windows-directml": "ok (20 s)",
-  "linux": "ok (10 s)",
+  "linux": "ok (20 s)",
   "windows": "ok (20 s)"
  },
  "smoke_gpu": {
@@ -45,15 +45,15 @@
    "adapter": "",
    "cpu": {
     "dtype": "bfloat16",
-    "s_per_step": 0.8271,
+    "s_per_step": 0.4879,
     "loss0": 16.784744
    },
    "gpu": null,
    "ok": false,
-   "reason": "brak DirectML (torch-directml) w tej wersji w?z?a"
+   "reason": "DirectML niedost\u0119pny: torch-directml nie widzi zgodnej karty (DirectX 12)"
   }
  },
- "sums_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2220-13498dc/SHA256SUMS.txt",
- "sig_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2220-13498dc/SHA256SUMS.txt.sigstore.json",
+ "sums_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2237-eae5c39/SHA256SUMS.txt",
+ "sig_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261024-2237-eae5c39/SHA256SUMS.txt.sigstore.json",
  "workflow": "https://github.com/maciejsearch-cloud/demo/.github/workflows/mycelium-node-build.yml"
 }
