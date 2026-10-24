@@ -2028,5 +2028,201 @@
   "t": 80,
   "version": 2
  },
- "system_prompt": "Jesteś Mycelium AI, pomocnym asystentem działającym na grzybni przeglądarek wolontariuszy. Odpowiadaj po polsku, krótko i życzliwie.  Jeśli nie masz pewności, powiedz to."
+ "system_prompt": "Jesteś Mycelium AI, pomocnym asystentem działającym na grzybni przeglądarek wolontariuszy. Odpowiadaj po polsku, krótko i życzliwie.  Jeśli nie masz pewności, powiedz to.",
+ "sft": [
+  {
+   "name": "sft-logic-0001.bin.gz",
+   "sha256": "0e5e27da6ae99c6ae52d690f5449ea46de580b5e23d0a7ea7122352ad3bddabc",
+   "bytes": 5687,
+   "n": 156,
+   "answer_tokens": 1626,
+   "rows_in": 253,
+   "leak_dropped": 0,
+   "per_category": {
+    "analogia": {
+     "correct": 19,
+     "kept": 18,
+     "answers": {
+      "buda": 1,
+      "cielę": 3,
+      "dół": 2,
+      "fałsz": 1,
+      "gniazdo": 1,
+      "koniec": 2,
+      "nora": 1,
+      "obora": 1,
+      "pędzel": 2,
+      "szczenię": 3,
+      "zimno": 1
+     }
+    },
+    "aspekt": {
+     "correct": 26,
+     "kept": 22,
+     "answers": {
+      "nie": 11,
+      "tak": 11
+     }
+    },
+    "ciąg": {
+     "correct": 6,
+     "kept": 6,
+     "answers": {
+      "12": 1,
+      "14": 1,
+      "24": 1,
+      "25": 1,
+      "34": 1,
+      "54": 1
+     }
+    },
+    "kolejność w czasie": {
+     "correct": 31,
+     "kept": 23,
+     "answers": {
+      "Adam": 3,
+      "Ala": 2,
+      "Bartek": 3,
+      "Basia": 3,
+      "Darek": 3,
+      "Ewa": 1,
+      "Filip": 3,
+      "Iza": 1,
+      "Janek": 3,
+      "Marta": 1
+     }
+    },
+    "kwantyfikatory": {
+     "correct": 11,
+     "kept": 8,
+     "answers": {
+      "nie": 4,
+      "tak": 4
+     }
+    },
+    "liczebniki": {
+     "correct": 4,
+     "kept": 3,
+     "answers": {
+      "ryb": 3
+     }
+    },
+    "negacja": {
+     "correct": 1,
+     "kept": 0,
+     "answers": {
+      "tak": 0
+     },
+     "dropped": "jedna odpowiedź tak/nie/nie wiadomo (podejrzenie zgadywania)"
+    },
+    "odmiana": {
+     "correct": 26,
+     "kept": 18,
+     "answers": {
+      "Adam": 2,
+      "Bartek": 3,
+      "Basia": 3,
+      "Darek": 1,
+      "Filip": 2,
+      "Iza": 3,
+      "Janek": 3,
+      "Marta": 1
+     }
+    },
+    "porządek": {
+     "correct": 24,
+     "kept": 16,
+     "answers": {
+      "Adam": 3,
+      "Ala": 1,
+      "Bartek": 2,
+      "Basia": 3,
+      "Darek": 2,
+      "Filip": 1,
+      "Janek": 3,
+      "Marta": 1
+     }
+    },
+    "przyczyna": {
+     "correct": 2,
+     "kept": 0,
+     "answers": {
+      "tak": 0
+     },
+     "dropped": "jedna odpowiedź tak/nie/nie wiadomo (podejrzenie zgadywania)"
+    },
+    "sprzeczność": {
+     "correct": 8,
+     "kept": 0,
+     "answers": {
+      "tak": 0
+     },
+     "dropped": "jedna odpowiedź tak/nie/nie wiadomo (podejrzenie zgadywania)"
+    },
+    "sylogizm": {
+     "correct": 14,
+     "kept": 4,
+     "answers": {
+      "nie": 2,
+      "tak": 2
+     }
+    },
+    "warunki": {
+     "correct": 2,
+     "kept": 0,
+     "answers": {
+      "tak": 0
+     },
+     "dropped": "jedna odpowiedź tak/nie/nie wiadomo (podejrzenie zgadywania)"
+    },
+    "zadanie tekstowe": {
+     "correct": 49,
+     "kept": 49,
+     "answers": {
+      "1": 3,
+      "13": 2,
+      "14": 1,
+      "16": 1,
+      "17": 1,
+      "23": 1,
+      "26": 2,
+      "28": 1,
+      "30": 1,
+      "31": 2,
+      "4": 1,
+      "40": 2,
+      "42": 2,
+      "43": 2,
+      "44": 1,
+      "47": 2,
+      "48": 2,
+      "52": 1,
+      "53": 3,
+      "54": 2,
+      "56": 2,
+      "57": 3,
+      "59": 1,
+      "60": 1,
+      "61": 1,
+      "66": 1,
+      "73": 1,
+      "74": 1,
+      "76": 2,
+      "81": 1,
+      "83": 1,
+      "87": 1
+     }
+    }
+   },
+   "kind": "sft-logic",
+   "source": "samodzielne ćwiczenia (selfplay v2): odpowiedzi opublikowanej wersji LM sprawdzone programem",
+   "inputs": [
+    "20261024-2341-correct.jsonl",
+    "20261025-0040-correct.jsonl",
+    "20261025-0129-correct.jsonl"
+   ],
+   "gate_eval_sha": "9bebb6f48df885029b02a0e97df6a1371458877b8608d9a4c1e1311f4bc66a0a",
+   "license": "dane generowane programem (repozytorium projektu)"
+  }
+ ]
 }
