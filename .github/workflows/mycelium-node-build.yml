@@ -23,10 +23,12 @@ jobs:
       matrix:
         include:
           - { os: windows-latest, plat: windows, file: MyceliumNode.exe, base: MyceliumNode }
+          # wariant z GPU przez DirectML (AMD/Intel/NVIDIA na Windows): torch-directml wymaga PyTorch 2.4.1
+          - { os: windows-latest, plat: windows-directml, file: MyceliumNode-DirectML.exe, base: MyceliumNode-DirectML }
           - { os: ubuntu-22.04, plat: linux, file: MyceliumNode-linux-x64, base: MyceliumNode-linux-x64 }
           - { os: macos-14, plat: macos, file: MyceliumNode-macos-arm64, base: MyceliumNode-macos-arm64 }
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 50
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,14 +39,15 @@ jobs:
       - name: Zależności (PyTorch CPU)
         shell: bash
         run: |
-          if [ "${{ matrix.plat }}" = macos ]; then python -m pip install -q torch; else python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu; fi
+          if [ "${{ matrix.plat }}" = windows-directml ]; then python -m pip install -q torch==2.4.1 torch-directml; elif [ "${{ matrix.plat }}" = macos ]; then python -m pip install -q torch; else python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu; fi
           python -m pip install -q websockets pyinstaller sigstore psutil
       - name: Budowanie
         shell: bash
         run: |
           python -c "import zipfile; zipfile.ZipFile('mycelium/node/mycelium-node.pyz').extractall('build_src')"
           printf 'from iot_mycelium.mesh.node import main\n\nmain()\n' > entry.py
-          pyinstaller --onefile --noconfirm --name "${{ matrix.base }}" --paths build_src --collect-submodules iot_mycelium --collect-all sigstore --collect-all sigstore_protobuf_specs --collect-all tuf --collect-data certifi --exclude-module tkinter entry.py
+          extra=""; if [ "${{ matrix.plat }}" = windows-directml ]; then extra="--collect-all torch_directml"; fi
+          pyinstaller --onefile $extra --noconfirm --name "${{ matrix.base }}" --paths build_src --collect-submodules iot_mycelium --collect-all sigstore --collect-all sigstore_protobuf_specs --collect-all tuf --collect-data certifi --exclude-module tkinter entry.py
           ls -la dist
       - name: Test startu (model, połączenie z grzybnią, strona stanu)
         shell: bash
@@ -74,13 +77,26 @@ jobs:
                       break
               assert st and st.get("connected"), f"brak połączenia: {st}"
               print("OK", json.dumps({k: st.get(k) for k in ("connected", "peers", "nodes_online", "backend", "label")}))
-              open("smoke.json", "w").write(json.dumps({"plat": plat, "ok": True, "s": round(time.time() - t0), "nodes_online": st.get("nodes_online")}))
+              smoke = {"plat": plat, "ok": True, "s": round(time.time() - t0), "nodes_online": st.get("nodes_online")}
           finally:
               p.terminate()
               try:
                   p.wait(30)
               except Exception:
                   p.kill()
+          if "--gpu-info" in open("build_src/iot_mycelium/mesh/node.py", encoding="utf-8").read():
+              # karty z systemu (WMI na Windows) + w wariancie DirectML test CPU vs DirectML (na serwerze CI: WARP,
+              # programowy DirectML – sprawdza działanie operacji i zgodność straty, nie prędkość prawdziwej karty)
+              arg = "--gpu-bench" if plat == "windows-directml" else "--gpu-info"
+              g = subprocess.run([exe, arg], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=2400)
+              print(g.stdout[-6000:], g.stderr[-3000:])
+              assert g.returncode == 0, "test GPU nie zadziałał"
+              gi = json.loads(g.stdout)
+              if plat == "windows-directml":
+                  assert gi["caps"]["variant"] == "directml", "brak torch-directml w wariancie DirectML"
+                  b = gi.get("bench") or {}
+                  smoke["gpu"] = {"directml": gi["directml"], "adapter": b.get("adapter"), "cpu": b.get("cpu"), "gpu": b.get("gpu"), "ok": b.get("ok"), "reason": b.get("reason")}
+          open("smoke.json", "w").write(json.dumps(smoke))
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -105,11 +121,12 @@ jobs:
       - name: Pliki do podpisu
         run: |
           mkdir -p out
-          cp art/windows/dist/MyceliumNode.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 mycelium/node/mycelium-node.pyz out/
+          cp art/windows/dist/MyceliumNode.exe art/windows-directml/dist/MyceliumNode-DirectML.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 mycelium/node/mycelium-node.pyz out/
       - uses: actions/attest-build-provenance@v2
         with:
           subject-path: |
             out/MyceliumNode.exe
+            out/MyceliumNode-DirectML.exe
             out/MyceliumNode-linux-x64
             out/MyceliumNode-macos-arm64
             out/mycelium-node.pyz
@@ -120,7 +137,7 @@ jobs:
           set -e
           tag="node-$(date -u +%Y%m%d-%H%M)-${GITHUB_SHA::7}"
           mkdir -p out
-          cp art/windows/dist/MyceliumNode.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 out/
+          cp art/windows/dist/MyceliumNode.exe art/windows-directml/dist/MyceliumNode-DirectML.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 out/
           cp mycelium/node/mycelium-node.pyz out/
           (cd out && sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt)
           cosign sign-blob --yes --new-bundle-format --bundle out/SHA256SUMS.txt.sigstore.json out/SHA256SUMS.txt
@@ -130,19 +147,21 @@ jobs:
           import hashlib, json, os, sys, glob
           tag = sys.argv[1]
           repo = os.environ["GITHUB_REPOSITORY"]
-          plat = {"MyceliumNode.exe": "windows", "MyceliumNode-linux-x64": "linux", "MyceliumNode-macos-arm64": "macos"}
+          plat = {"MyceliumNode.exe": "windows", "MyceliumNode-DirectML.exe": "windows-directml", "MyceliumNode-linux-x64": "linux", "MyceliumNode-macos-arm64": "macos"}
           rel = f"https://github.com/{repo}/releases/download/{tag}"
           files = []
           for n, o in plat.items():
               b = open(f"out/{n}", "rb").read()
               files.append({"os": o, "name": n, "url": f"https://github.com/{repo}/releases/download/{tag}/{n}", "sha256": hashlib.sha256(b).hexdigest(), "bytes": len(b)})
-          smoke = {}
+          smoke, smoke_gpu = {}, {}
           for f in glob.glob("art/*/smoke.json"):
               s = json.load(open(f)); smoke[s["plat"]] = f"ok ({s['s']} s)"
+              if s.get("gpu"):
+                  smoke_gpu[s["plat"]] = s["gpu"]
           pyz = hashlib.sha256(open("mycelium/node/mycelium-node.pyz", "rb").read()).hexdigest()
           from datetime import datetime, timezone
           json.dump({"tag": tag, "built": datetime.now(timezone.utc).isoformat(), "run_url": f"https://github.com/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
-                     "pyz_sha256": pyz, "files": files, "smoke": smoke,
+                     "pyz_sha256": pyz, "files": files, "smoke": smoke, "smoke_gpu": smoke_gpu,
                      "sums_url": f"{rel}/SHA256SUMS.txt", "sig_url": f"{rel}/SHA256SUMS.txt.sigstore.json",
                      "workflow": f"https://github.com/{repo}/.github/workflows/mycelium-node-build.yml"}, open("mycelium/node/binaries.json", "w"), indent=1)
           PY
