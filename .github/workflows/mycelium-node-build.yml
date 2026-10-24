@@ -89,12 +89,28 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write      # podpis Sigstore bez kluczy (tożsamość tego workflow)
+      attestations: write  # poświadczenie pochodzenia GitHub (gh attestation verify)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           path: art
-      - name: Wydanie + sumy SHA-256
+      - uses: sigstore/cosign-installer@v3
+      - name: Pliki do podpisu
+        run: |
+          mkdir -p out
+          cp art/windows/dist/MyceliumNode.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 mycelium/node/mycelium-node.pyz out/
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: |
+            out/MyceliumNode.exe
+            out/MyceliumNode-linux-x64
+            out/MyceliumNode-macos-arm64
+            out/mycelium-node.pyz
+      - name: Wydanie + sumy SHA-256 + podpis
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -102,14 +118,17 @@ jobs:
           tag="node-$(date -u +%Y%m%d-%H%M)-${GITHUB_SHA::7}"
           mkdir -p out
           cp art/windows/dist/MyceliumNode.exe art/linux/dist/MyceliumNode-linux-x64 art/macos/dist/MyceliumNode-macos-arm64 out/
+          cp mycelium/node/mycelium-node.pyz out/
           (cd out && sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt)
+          cosign sign-blob --yes --bundle out/SHA256SUMS.txt.sigstore.json out/SHA256SUMS.txt
           gh release create "$tag" out/* --title "Mycelium AI – węzeł na PC ($tag)" --latest \
-            --notes "Węzeł grzybni Mycelium AI (model językowy na CPU). Zbudowany z mycelium/node/mycelium-node.pyz w ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}; każdy plik uruchomiony w CI (połączenie z grzybnią). Pliki nie są podpisane certyfikatem – sprawdź SHA256SUMS.txt."
+            --notes "Węzeł grzybni Mycelium AI (model językowy na CPU). Zbudowany z mycelium/node/mycelium-node.pyz w ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}; każdy plik uruchomiony w CI (połączenie z grzybnią). Weryfikacja: gh attestation verify PLIK -R ${GITHUB_REPOSITORY} albo cosign verify-blob --bundle SHA256SUMS.txt.sigstore.json --certificate-identity-regexp '^https://github.com/${GITHUB_REPOSITORY}/.github/workflows/mycelium-node-build.yml@' --certificate-oidc-issuer https://token.actions.githubusercontent.com SHA256SUMS.txt, potem sha256sum -c SHA256SUMS.txt. Brak certyfikatu wydawcy Windows/Apple (SmartScreen/Gatekeeper ostrzeże)."
           python3 - "$tag" <<'PY'
           import hashlib, json, os, sys, glob
           tag = sys.argv[1]
           repo = os.environ["GITHUB_REPOSITORY"]
           plat = {"MyceliumNode.exe": "windows", "MyceliumNode-linux-x64": "linux", "MyceliumNode-macos-arm64": "macos"}
+          rel = f"https://github.com/{repo}/releases/download/{tag}"
           files = []
           for n, o in plat.items():
               b = open(f"out/{n}", "rb").read()
@@ -120,7 +139,9 @@ jobs:
           pyz = hashlib.sha256(open("mycelium/node/mycelium-node.pyz", "rb").read()).hexdigest()
           from datetime import datetime, timezone
           json.dump({"tag": tag, "built": datetime.now(timezone.utc).isoformat(), "run_url": f"https://github.com/{repo}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
-                     "pyz_sha256": pyz, "files": files, "smoke": smoke}, open("mycelium/node/binaries.json", "w"), indent=1)
+                     "pyz_sha256": pyz, "files": files, "smoke": smoke,
+                     "sums_url": f"{rel}/SHA256SUMS.txt", "sig_url": f"{rel}/SHA256SUMS.txt.sigstore.json",
+                     "workflow": f"https://github.com/{repo}/.github/workflows/mycelium-node-build.yml"}, open("mycelium/node/binaries.json", "w"), indent=1)
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
