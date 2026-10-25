@@ -1,48 +1,48 @@
 {
-"generated_at": "2026-10-25T00:40:47+0200",
+"generated_at": "2026-10-25T01:29:47+0200",
 "model": "lm v1",
 "source": "scripts/selfplay_run.py (selfplay v2); niepewność = rozkład logitów modelu na odpowiedziach",
 "per_category": {
 "analogia": {
-"n": 31,
-"correct": 8,
-"acc": 0.2581,
-"baseline": 0.0968,
-"baseline_answer": "jagnię"
+"n": 48,
+"correct": 11,
+"acc": 0.2292,
+"baseline": 0.0833,
+"baseline_answer": "cielę"
 },
 "aspekt": {
-"n": 24,
-"correct": 11,
-"acc": 0.4583,
-"baseline": 0.3333,
+"n": 59,
+"correct": 20,
+"acc": 0.339,
+"baseline": 0.339,
 "baseline_answer": "nie"
 },
 "ciąg": {
-"n": 14,
-"correct": 4,
-"acc": 0.2857,
-"baseline": 0.1429,
-"baseline_answer": "33"
+"n": 27,
+"correct": 2,
+"acc": 0.0741,
+"baseline": 0.0741,
+"baseline_answer": "20"
 },
 "kolejność w czasie": {
-"n": 18,
-"correct": 6,
-"acc": 0.3333,
-"baseline": 0.2222,
-"baseline_answer": "Filip"
+"n": 93,
+"correct": 25,
+"acc": 0.2688,
+"baseline": 0.1613,
+"baseline_answer": "Adam"
 },
 "kwantyfikatory": {
-"n": 19,
-"correct": 7,
-"acc": 0.3684,
-"baseline": 0.3684,
-"baseline_answer": "tak"
+"n": 24,
+"correct": 10,
+"acc": 0.4167,
+"baseline": 0.3333,
+"baseline_answer": "nie"
 },
 "liczebniki": {
-"n": 21,
-"correct": 3,
-"acc": 0.1429,
-"baseline": 0.1429,
+"n": 29,
+"correct": 2,
+"acc": 0.069,
+"baseline": 0.1379,
 "baseline_answer": "domów"
 },
 "negacja": {
@@ -53,30 +53,30 @@
 "baseline_answer": "nie"
 },
 "nie wszystkie": {
-"n": 14,
+"n": 21,
 "correct": 0,
 "acc": 0.0,
-"baseline": 0.3571,
+"baseline": 0.3333,
 "baseline_answer": "nie"
 },
 "odmiana": {
-"n": 29,
-"correct": 6,
-"acc": 0.2069,
-"baseline": 0.1724,
-"baseline_answer": "Darek"
+"n": 58,
+"correct": 13,
+"acc": 0.2241,
+"baseline": 0.1379,
+"baseline_answer": "Bartek"
 },
 "porządek": {
-"n": 25,
-"correct": 7,
-"acc": 0.28,
-"baseline": 0.24,
-"baseline_answer": "Marta"
+"n": 46,
+"correct": 10,
+"acc": 0.2174,
+"baseline": 0.1522,
+"baseline_answer": "Adam"
 },
 "przyczyna": {
-"n": 15,
-"correct": 0,
-"acc": 0.0,
+"n": 18,
+"correct": 2,
+"acc": 0.1111,
 "baseline": 0.3333,
 "baseline_answer": "nie"
 },
@@ -88,31 +88,31 @@
 "baseline_answer": "tak"
 },
 "sylogizm": {
-"n": 30,
-"correct": 7,
-"acc": 0.2333,
+"n": 36,
+"correct": 6,
+"acc": 0.1667,
 "baseline": 0.3333,
 "baseline_answer": "nie"
 },
 "warunki": {
-"n": 10,
-"correct": 1,
-"acc": 0.1,
-"baseline": 0.4,
-"baseline_answer": "tak"
+"n": 12,
+"correct": 2,
+"acc": 0.1667,
+"baseline": 0.3333,
+"baseline_answer": "nie"
 },
 "zadanie tekstowe": {
-"n": 28,
-"correct": 9,
-"acc": 0.3214,
-"baseline": 0.1429,
+"n": 103,
+"correct": 34,
+"acc": 0.3301,
+"baseline": 0.1942,
 "baseline_answer": "1"
 },
 "łańcuch": {
-"n": 25,
+"n": 49,
 "correct": 0,
 "acc": 0.0,
-"baseline": 0.36,
+"baseline": 0.3469,
 "baseline_answer": "tak"
 }
 },
@@ -150,13 +150,45 @@
 ],
 "model": {
 "p": {
-"a": 0.386,
-"b": 0.394,
+"a": 0.3824,
+"b": 0.3593,
 "c": 0.0001,
-"d": 0.0435,
-"e": 0.1764
+"d": 0.0521,
+"e": 0.2061
 },
-"margin": 0.008
+"margin": 0.0231
+}
+},
+{
+"id": "l02d2704b",
+"kind": "zdrowy rozsądek",
+"q": "Czy parasol chroni przed deszczem lepiej niż kaptur?",
+"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.5149,
+"nie": 0.0267,
+"nw": 0.4584
+},
+"margin": 0.0565
 }
 },
 {
@@ -192,77 +224,13 @@
 ],
 "model": {
 "p": {
-"a": 0.295,
-"b": 0.0259,
-"c": 0.2808,
-"d": 0.0541,
-"e": 0.3441
+"a": 0.2285,
+"b": 0.0219,
+"c": 0.2764,
+"d": 0.0738,
+"e": 0.3994
 },
-"margin": 0.0491
-}
-},
-{
-"id": "l02d2704b",
-"kind": "zdrowy rozsądek",
-"q": "Czy parasol chroni przed deszczem lepiej niż kaptur?",
-"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.5644,
-"nie": 0.0222,
-"nw": 0.4134
-},
-"margin": 0.151
-}
-},
-{
-"id": "l92780b61",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka G świeci, to lampka D świeci. Jeśli lampka D świeci, to lampka F świeci. Wiadomo, że lampka F nie świeci. Czy lampka G świeci?\n2) Jeśli lampka G świeci, to lampka D świeci. Jeśli lampka D świeci, to lampka F świeci. Wiadomo, że lampka F nie świeci. Czy można powiedzieć, że lampka G świeci?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.578,
-"nie": 0.0232,
-"nw": 0.3988
-},
-"margin": 0.1792
+"margin": 0.123
 }
 },
 {
@@ -298,45 +266,13 @@
 ],
 "model": {
 "p": {
-"a": 0.5713,
-"b": 0.0272,
+"a": 0.5493,
+"b": 0.0304,
 "c": 0.0001,
-"d": 0.0471,
-"e": 0.3543
+"d": 0.0388,
+"e": 0.3814
 },
-"margin": 0.217
-}
-},
-{
-"id": "le3378041",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka H świeci, to lampka F świeci. Jeśli lampka F świeci, to lampka C świeci. Wiadomo, że lampka C nie świeci. Czy lampka H świeci?\n2) Jeśli lampka H świeci, to lampka F świeci. Jeśli lampka F świeci, to lampka C świeci. Wiadomo, że lampka C nie świeci. Czy można powiedzieć, że lampka H świeci?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.6135,
-"nie": 0.0247,
-"nw": 0.3617
-},
-"margin": 0.2518
+"margin": 0.1679
 }
 },
 {
@@ -372,183 +308,13 @@
 ],
 "model": {
 "p": {
-"a": 0.1205,
-"b": 0.0052,
-"c": 0.0138,
-"d": 0.5569,
-"e": 0.3036
-},
-"margin": 0.2533
-}
-},
-{
-"id": "l9596a978",
-"kind": "zdrowy rozsądek",
-"q": "Czy jazda rowerem pod górę męczy bardziej niż z górki?",
-"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.608,
-"nie": 0.051,
-"nw": 0.341
-},
-"margin": 0.267
-}
-},
-{
-"id": "l28905301",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka C świeci, to lampka B świeci. Jeśli lampka B świeci, to lampka E świeci. Wiadomo, że lampka E świeci. Czy lampka C świeci?\n2) Gdy lampka C świeci, to lampka B świeci. Jeśli lampka B świeci, to lampka E świeci. Wiadomo, że lampka E świeci. Czy lampka C świeci?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.6353,
-"nie": 0.0217,
-"nw": 0.343
-},
-"margin": 0.2923
-}
-},
-{
-"id": "l0143fdea",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Wiadomo, że nieprawda, że Ala zostaje w domu. Czy Ala zostaje w domu?\n2) Wiadomo, że nieprawda, że Ala zostaje w domu. Czy można powiedzieć, że Ala zostaje w domu?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.6436,
-"nie": 0.0122,
-"nw": 0.3442
-},
-"margin": 0.2994
-}
-},
-{
-"id": "l6cc54ff4",
-"kind": "analogia na wyczucie",
-"q": "„wiosna” ma się do „rok” tak jak „poranek” do…?",
-"why": "relacja nie jest zapisana w żadnej bazie – liczy się ludzkie wyczucie",
-"options": [
-{
-"v": "a",
-"label": "dzień"
-},
-{
-"v": "b",
-"label": "świt"
-},
-{
-"v": "c",
-"label": "budzik"
-},
-{
-"v": "d",
-"label": "tydzień"
-},
-{
-"v": "e",
-"label": "nic nie pasuje"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"a": 0.6336,
+"a": 0.0971,
 "b": 0.0045,
-"c": 0.0002,
-"d": 0.3244,
-"e": 0.0373
+"c": 0.0181,
+"d": 0.5303,
+"e": 0.3501
 },
-"margin": 0.3092
-}
-},
-{
-"id": "l59feea95",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Czy zdania „niektóre koty są duże” oraz „niektóre koty nie są duże” mogą być jednocześnie prawdziwe?\n2) Czy można powiedzieć, że zdania „niektóre koty są duże” oraz „niektóre koty nie są duże” mogą być jednocześnie prawdziwe?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.6602,
-"nie": 0.0215,
-"nw": 0.3183
-},
-"margin": 0.3419
+"margin": 0.1802
 }
 },
 {
@@ -584,19 +350,93 @@
 ],
 "model": {
 "p": {
-"a": 0.2192,
-"b": 0.0047,
-"c": 0.0283,
-"d": 0.5781,
-"e": 0.1697
+"a": 0.2361,
+"b": 0.004,
+"c": 0.0382,
+"d": 0.4862,
+"e": 0.2355
 },
-"margin": 0.3589
+"margin": 0.2501
 }
 },
 {
-"id": "l3b6bfde3",
+"id": "l9596a978",
+"kind": "zdrowy rozsądek",
+"q": "Czy jazda rowerem pod górę męczy bardziej niż z górki?",
+"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.6029,
+"nie": 0.0877,
+"nw": 0.3094
+},
+"margin": 0.2935
+}
+},
+{
+"id": "l6cc54ff4",
+"kind": "analogia na wyczucie",
+"q": "„wiosna” ma się do „rok” tak jak „poranek” do…?",
+"why": "relacja nie jest zapisana w żadnej bazie – liczy się ludzkie wyczucie",
+"options": [
+{
+"v": "a",
+"label": "dzień"
+},
+{
+"v": "b",
+"label": "świt"
+},
+{
+"v": "c",
+"label": "budzik"
+},
+{
+"v": "d",
+"label": "tydzień"
+},
+{
+"v": "e",
+"label": "nic nie pasuje"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"a": 0.6326,
+"b": 0.0045,
+"c": 0.0002,
+"d": 0.3215,
+"e": 0.0413
+},
+"margin": 0.3111
+}
+},
+{
+"id": "l7f7d4f49",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka C świeci, to lampka A świeci. Jeśli lampka A świeci, to lampka G świeci. Wiadomo, że lampka G świeci. Czy lampka C świeci?\n2) Gdy lampka C świeci, to lampka A świeci. Jeśli lampka A świeci, to lampka G świeci. Wiadomo, że lampka G świeci. Czy lampka C świeci?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka C świeci, to lampka F świeci. Jeśli lampka F świeci, to lampka A świeci. Wiadomo, że lampka C świeci. Czy lampka A świeci?\n2) Jeśli lampka C świeci, to lampka F świeci. Jeśli lampka F świeci, to lampka A świeci. Wiadomo, że lampka C świeci. Czy można powiedzieć, że lampka A świeci?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -618,17 +458,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.7033,
-"nie": 0.0142,
-"nw": 0.2826
+"tak": 0.6689,
+"nie": 0.0198,
+"nw": 0.3112
 },
-"margin": 0.4207
+"margin": 0.3577
 }
 },
 {
-"id": "l0185984f",
+"id": "l07e7068d",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli świeci słońce, to Janek idzie na spacer. Wiadomo, że nie świeci słońce. Czy Janek nie idzie na spacer?\n2) Jeśli świeci słońce, to Janek idzie na spacer. Wiadomo, że nie świeci słońce. Czy można powiedzieć, że Janek nie idzie na spacer?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka B świeci, to lampka C świeci. Jeśli lampka C świeci, to lampka F świeci. Wiadomo, że lampka B świeci. Czy lampka F świeci?\n2) Gdy lampka B świeci, to lampka C świeci. Jeśli lampka C świeci, to lampka F świeci. Wiadomo, że lampka B świeci. Czy lampka F świeci?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -650,11 +490,11 @@
 ],
 "model": {
 "p": {
-"tak": 0.7141,
-"nie": 0.0218,
-"nw": 0.2641
+"tak": 0.7084,
+"nie": 0.0165,
+"nw": 0.2751
 },
-"margin": 0.45
+"margin": 0.4333
 }
 },
 {
@@ -682,75 +522,11 @@
 ],
 "model": {
 "p": {
-"tak": 0.7214,
-"nie": 0.0277,
-"nw": 0.2508
+"tak": 0.6866,
+"nie": 0.0612,
+"nw": 0.2522
 },
-"margin": 0.4706
-}
-},
-{
-"id": "lc071a77e",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli jest niedziela, to sklep jest zamknięty. Wiadomo, że sklep nie jest zamknięty. Czy jest niedziela?\n2) Jeśli jest niedziela, to sklep jest zamknięty. Wiadomo, że sklep nie jest zamknięty. Czy można powiedzieć, że jest niedziela?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.7311,
-"nie": 0.0186,
-"nw": 0.2503
-},
-"margin": 0.4808
-}
-},
-{
-"id": "ld5b0e229",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli rzeka wylała, to droga została zamknięta. Wiadomo, że droga została zamknięta. Czy na pewno rzeka wylała?\n2) Jeśli rzeka wylała, to droga została zamknięta. Wiemy, że droga została zamknięta. Czy na pewno rzeka wylała?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.7511,
-"nie": 0.0167,
-"nw": 0.2323
-},
-"margin": 0.5188
+"margin": 0.4344
 }
 },
 {
@@ -786,13 +562,77 @@
 ],
 "model": {
 "p": {
-"a": 0.123,
-"b": 0.007,
-"c": 0.6793,
-"d": 0.0316,
-"e": 0.1591
+"a": 0.1093,
+"b": 0.0084,
+"c": 0.6713,
+"d": 0.0201,
+"e": 0.1909
 },
-"margin": 0.5202
+"margin": 0.4804
+}
+},
+{
+"id": "ld2c02421",
+"kind": "parafraza",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli lampka F świeci, to lampka A świeci. Jeśli lampka A świeci, to lampka E świeci. Wiadomo, że lampka F świeci. Czy lampka E świeci?\n2) Gdy lampka F świeci, to lampka A świeci. Jeśli lampka A świeci, to lampka E świeci. Wiadomo, że lampka F świeci. Czy lampka E świeci?",
+"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.7342,
+"nie": 0.0148,
+"nw": 0.2509
+},
+"margin": 0.4833
+}
+},
+{
+"id": "laa24c063",
+"kind": "zdrowy rozsądek",
+"q": "Czy roślina postawiona w ciemnej piwnicy urośnie tak samo jak na parapecie?",
+"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.7266,
+"nie": 0.0615,
+"nw": 0.2119
+},
+"margin": 0.5147
 }
 },
 {
@@ -828,109 +668,13 @@
 ],
 "model": {
 "p": {
-"a": 0.0684,
+"a": 0.0414,
 "b": 0.0,
-"c": 0.1854,
-"d": 0.0391,
-"e": 0.7071
+"c": 0.1821,
+"d": 0.0371,
+"e": 0.7393
 },
-"margin": 0.5217
-}
-},
-{
-"id": "l955c0cc8",
-"kind": "zdrowy rozsądek",
-"q": "Czy picie kawy wieczorem może utrudnić zaśnięcie?",
-"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.7714,
-"nie": 0.025,
-"nw": 0.2037
-},
-"margin": 0.5677
-}
-},
-{
-"id": "l713ec170",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli świeci słońce, to Janek idzie na spacer. Wiadomo, że Janek nie idzie na spacer. Czy świeci słońce?\n2) Gdy świeci słońce, to Janek idzie na spacer. Wiadomo, że Janek nie idzie na spacer. Czy świeci słońce?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.7879,
-"nie": 0.0111,
-"nw": 0.201
-},
-"margin": 0.5869
-}
-},
-{
-"id": "laa24c063",
-"kind": "zdrowy rozsądek",
-"q": "Czy roślina postawiona w ciemnej piwnicy urośnie tak samo jak na parapecie?",
-"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.7834,
-"nie": 0.0326,
-"nw": 0.184
-},
-"margin": 0.5994
+"margin": 0.5572
 }
 },
 {
@@ -958,18 +702,18 @@
 ],
 "model": {
 "p": {
-"tak": 0.8098,
-"nie": 0.0185,
-"nw": 0.1716
+"tak": 0.7703,
+"nie": 0.0354,
+"nw": 0.1943
 },
-"margin": 0.6382
+"margin": 0.576
 }
 },
 {
-"id": "l4678dd02",
-"kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Jeśli świeci słońce, to Janek idzie na spacer. Wiadomo, że świeci słońce. Czy Janek idzie na spacer?\n2) Jeśli świeci słońce, to Janek idzie na spacer. Wiemy, że świeci słońce. Czy Janek idzie na spacer?",
-"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
+"id": "l955c0cc8",
+"kind": "zdrowy rozsądek",
+"q": "Czy picie kawy wieczorem może utrudnić zaśnięcie?",
+"why": "wymaga wiedzy o świecie, nie wynika z treści zdania",
 "options": [
 {
 "v": "tak",
@@ -990,11 +734,11 @@
 ],
 "model": {
 "p": {
-"tak": 0.8343,
-"nie": 0.0088,
-"nw": 0.1569
+"tak": 0.7848,
+"nie": 0.0285,
+"nw": 0.1868
 },
-"margin": 0.6774
+"margin": 0.598
 }
 },
 {
@@ -1022,49 +766,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.8298,
-"nie": 0.0201,
-"nw": 0.1502
+"tak": 0.8348,
+"nie": 0.0277,
+"nw": 0.1375
 },
-"margin": 0.6796
+"margin": 0.6973
 }
 },
 {
-"id": "l7e868236",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Darek ma 183 cm wzrostu, Janek ma 194 cm, a Bartek ma 174 cm. Kto jest najniższy? Podaj imię.”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.8537,
-"nie": 0.0068,
-"nw": 0.1395
-},
-"margin": 0.7142
-}
-},
-{
-"id": "l46643e57",
+"id": "l121d0707",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Wszystkie dęby to drzewa. Bartek hoduje drzewa. Czy Bartek hoduje dęby?\n2) Wszystkie dęby to drzewa. Bartek hoduje drzewa. Czy można powiedzieć, że Bartek hoduje dęby?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Wszystkie tulipany to kwiaty. Basia hoduje kwiaty. Czy Basia hoduje tulipany?\n2) Wszystkie tulipany to kwiaty. Basia ma w domu kwiaty. Czy Basia hoduje tulipany?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -1086,11 +798,11 @@
 ],
 "model": {
 "p": {
-"tak": 0.847,
-"nie": 0.0217,
-"nw": 0.1313
+"tak": 0.8495,
+"nie": 0.0261,
+"nw": 0.1244
 },
-"margin": 0.7157
+"margin": 0.7251
 }
 },
 {
@@ -1118,17 +830,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.8537,
-"nie": 0.0088,
-"nw": 0.1376
+"tak": 0.8564,
+"nie": 0.0157,
+"nw": 0.1279
 },
-"margin": 0.7161
+"margin": 0.7285
 }
 },
 {
-"id": "l4f3addf7",
+"id": "l394f75f8",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Wszystkie jamniki są małe (każdy osobnik). Czy jakieś jamniki są duże?\n2) Wszystkie jamniki są małe (każdy osobnik). Czy można powiedzieć, że jakieś jamniki są duże?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Wszystkie jamniki to psy. Ala hoduje psy. Czy Ala hoduje jamniki?\n2) Wszystkie jamniki to psy. Ala ma w domu psy. Czy Ala hoduje jamniki?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -1150,17 +862,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.8604,
-"nie": 0.0202,
-"nw": 0.1194
+"tak": 0.8623,
+"nie": 0.0224,
+"nw": 0.1153
 },
-"margin": 0.741
+"margin": 0.747
 }
 },
 {
-"id": "l48ca20c0",
+"id": "l596b1838",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Adam przyszedł wcześniej niż Iza. Iza przyszła wcześniej niż Marta. Kto przyszedł ostatni? Podaj imię.\n2) Adam był szybciej niż Iza. Iza przyszła wcześniej niż Marta. Kto przyszedł ostatni? Podaj imię.",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Wszystkie karpie to ryby. Darek nie hoduje żadnych ryb. Czy Darek hoduje karpie?\n2) Wszystkie karpie to ryby. Darek nie hoduje żadnych ryb. Czy można powiedzieć, że Darek hoduje karpie?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -1182,49 +894,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.8787,
-"nie": 0.0174,
-"nw": 0.104
+"tak": 0.8917,
+"nie": 0.0156,
+"nw": 0.0926
 },
-"margin": 0.7747
+"margin": 0.7991
 }
 },
 {
-"id": "lbe4a01f9",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Adam ma 174 cm wzrostu, Filip ma 199 cm, a Janek ma 159 cm. Kto jest najniższy? Podaj imię.”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.887,
-"nie": 0.01,
-"nw": 0.103
-},
-"margin": 0.784
-}
-},
-{
-"id": "l63129e4a",
+"id": "l6cb1c4db",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Nie wszystkie róże są głośne. Czy niektóre róże nie są głośne?\n2) Nie wszystkie róże są głośne. Czy można powiedzieć, że niektóre róże nie są głośne?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Marta przyszła wcześniej niż Janek. Janek przyszedł wcześniej niż Basia. Kto przyszedł pierwszy? Podaj imię.\n2) Marta przyszła wcześniej niż Janek. Janek był szybciej niż Basia. Kto przyszedł pierwszy? Podaj imię.",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -1246,17 +926,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.8926,
-"nie": 0.0073,
-"nw": 0.1001
+"tak": 0.917,
+"nie": 0.012,
+"nw": 0.071
 },
-"margin": 0.7925
+"margin": 0.846
 }
 },
 {
-"id": "l5d4f6daa",
+"id": "l57c2da22",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Nie wszystkie pszczoły są głośne. Czy niektóre pszczoły nie są głośne?\n2) Nie prawie wszystkie pszczoły są głośne. Czy niektóre pszczoły nie są głośne?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Nie wszystkie karpie są głośne. Czy niektóre karpie nie są głośne?\n2) Nie prawie wszystkie karpie są głośne. Czy niektóre karpie nie są głośne?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -1278,17 +958,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.895,
-"nie": 0.0062,
-"nw": 0.0988
+"tak": 0.9222,
+"nie": 0.0052,
+"nw": 0.0726
 },
-"margin": 0.7962
+"margin": 0.8496
 }
 },
 {
-"id": "l14bfd1ed",
+"id": "l1ca372e2",
 "kind": "parafraza",
-"q": "Czy te dwa pytania znaczą to samo?\n1) Ala malowała płot, ale przerwała w połowie. Czy Ala pomalowała płot?\n2) Ala malowała płot, ale przerwała w połowie. Czy można powiedzieć, że Ala pomalowała płot?",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Nie wszystkie wróble są głośne. Czy niektóre wróble nie są głośne?\n2) Nie prawie wszystkie wróble są głośne. Czy niektóre wróble nie są głośne?",
 "why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
 "options": [
 {
@@ -1310,17 +990,49 @@
 ],
 "model": {
 "p": {
-"tak": 0.9103,
-"nie": 0.0035,
-"nw": 0.0862
+"tak": 0.9231,
+"nie": 0.0046,
+"nw": 0.0723
 },
-"margin": 0.8241
+"margin": 0.8508
 }
 },
 {
-"id": "lb0b4c43a",
+"id": "l90e67f38",
+"kind": "parafraza",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Ewa przyszła wcześniej niż Janek. Janek przyszedł wcześniej niż Bartek. Kto przyszedł ostatni? Podaj imię.\n2) Ewa przyszła wcześniej niż Janek. Janek był szybciej niż Bartek. Kto przyszedł ostatni? Podaj imię.",
+"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9206,
+"nie": 0.0106,
+"nw": 0.0688
+},
+"margin": 0.8518
+}
+},
+{
+"id": "l326dd681",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Marta ma 179 cm wzrostu, Bartek ma 168 cm, a Iza ma 167 cm. Kto jest najniższy? Podaj imię.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„początek : koniec = dzień : ? Wybierz jedno słowo: gniazdo, kocię, noc, ul.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -1342,145 +1054,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.9099,
-"nie": 0.0053,
-"nw": 0.0849
+"tak": 0.9508,
+"nie": 0.0156,
+"nw": 0.0337
 },
-"margin": 0.825
+"margin": 0.9171
 }
 },
 {
-"id": "lb6a84f30",
+"id": "l71022c33",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Ewa ma 178 cm wzrostu, Filip ma 160 cm, a Darek ma 155 cm. Kto jest najniższy? Podaj imię.”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9184,
-"nie": 0.007,
-"nw": 0.0746
-},
-"margin": 0.8438
-}
-},
-{
-"id": "l46a58109",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli pada deszcz, to ulica jest mokra. Wiadomo, że nie pada deszcz. Czy ulica nie jest mokra?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9484,
-"nie": 0.0022,
-"nw": 0.0494
-},
-"margin": 0.899
-}
-},
-{
-"id": "l93f2b059",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Czy zdania „niektóre wróble są duże” oraz „niektóre wróble nie są duże” mogą być jednocześnie prawdziwe?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9525,
-"nie": 0.0035,
-"nw": 0.044
-},
-"margin": 0.9085
-}
-},
-{
-"id": "lbb788792",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Ponieważ spadł śnieg, dzieci ulepiły bałwana. Wiadomo, że spadł śnieg. Czy dzieci ulepiły bałwana?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9592,
-"nie": 0.0033,
-"nw": 0.0375
-},
-"margin": 0.9217
-}
-},
-{
-"id": "lc13fabab",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Marta przyszła wcześniej niż Janek. Janek przyszedł wcześniej niż Filip. Kto przyszedł ostatni? Podaj imię.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Marta ma 175 cm wzrostu, Basia ma 168 cm, a Janek ma 186 cm. Kto jest najniższy? Podaj imię.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -1503,336 +1087,48 @@
 "model": {
 "p": {
 "tak": 0.9602,
-"nie": 0.0041,
-"nw": 0.0357
-},
-"margin": 0.9245
-}
-},
-{
-"id": "lc8051a9e",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli Ala ma gorączkę, to Ala zostaje w domu. Wiadomo, że Ala nie zostaje w domu. Czy Ala ma gorączkę?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.96,
-"nie": 0.0048,
-"nw": 0.0353
-},
-"margin": 0.9247
-}
-},
-{
-"id": "l3840c52f",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Ponieważ zepsuł się autobus, Janek poszedł pieszo. Wiadomo, że zepsuł się autobus. Czy Janek poszedł pieszo?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9622,
-"nie": 0.0024,
-"nw": 0.0354
-},
-"margin": 0.9268
-}
-},
-{
-"id": "l2253c10d",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Zawsze gdy zepsuł się autobus, to Janek poszedł pieszo. Tym razem okazało się, że nieprawda, że Janek poszedł pieszo. Czy zepsuł się autobus?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9652,
-"nie": 0.0059,
-"nw": 0.0288
-},
-"margin": 0.9364
-}
-},
-{
-"id": "l7ee7e3aa",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli lampka B świeci, to lampka D świeci. Jeśli lampka D świeci, to lampka A świeci. Wiadomo, że lampka A świeci. Czy lampka B świeci?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9715,
-"nie": 0.0013,
-"nw": 0.0271
-},
-"margin": 0.9444
-}
-},
-{
-"id": "l8731ac3c",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli lampka G świeci, to lampka D świeci. Jeśli lampka D świeci, to lampka F świeci. Wiadomo, że lampka F nie świeci. Czy lampka G świeci?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9732,
-"nie": 0.0016,
-"nw": 0.0253
-},
-"margin": 0.9479
-}
-},
-{
-"id": "l23a248a7",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Wszystkie dęby to drzewa. Ewa nie hoduje żadnych drzew. Czy Ewa hoduje dęby?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9745,
-"nie": 0.0048,
-"nw": 0.0207
-},
-"margin": 0.9538
-}
-},
-{
-"id": "l1ef6a93f",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli lampka E świeci, to lampka B świeci. Jeśli lampka B świeci, to lampka G świeci. Wiadomo, że lampka G nie świeci. Czy lampka E świeci?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9772,
-"nie": 0.0009,
-"nw": 0.0219
-},
-"margin": 0.9553
-}
-},
-{
-"id": "l8b502242",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Niektóre wróble są głośne. Czy wszystkie wróble są głośne?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.977,
-"nie": 0.0029,
-"nw": 0.02
-},
-"margin": 0.957
-}
-},
-{
-"id": "l923dfa0e",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Wszystkie jamniki są małe (każdy osobnik). Czy jakieś jamniki są duże?”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9789,
-"nie": 0.0029,
-"nw": 0.0182
-},
-"margin": 0.9607
-}
-},
-{
-"id": "l4fb3ca6a",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„koń : źrebię = krowa : ? Wybierz jedno słowo: cielę, gniazdo, igła, stajnia.”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9798,
 "nie": 0.0026,
-"nw": 0.0176
+"nw": 0.0372
 },
-"margin": 0.9622
+"margin": 0.923
 }
 },
 {
-"id": "l648c6df7",
+"id": "l1a1172a0",
+"kind": "parafraza",
+"q": "Czy te dwa pytania znaczą to samo?\n1) Marta jadła obiad, ale przerwała w połowie. Czy Marta zjadła obiad?\n2) Marta jadła obiad, ale przerwała w połowie. Czy można powiedzieć, że Marta zjadła obiad?",
+"why": "program nie wie, czy podmiana słów zmieniła sens – to ocena człowieka",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9606,
+"nie": 0.0038,
+"nw": 0.0356
+},
+"margin": 0.925
+}
+},
+{
+"id": "l04d2a5b9",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Uzupełnij: 5 … (kot). Wybierz jedną formę: kot, koty, kotów.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Filip miał 59 jabłek i dostał jeszcze 3 od Ali. Ile jabłek ma teraz Filip?”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -1854,17 +1150,369 @@
 ],
 "model": {
 "p": {
-"tak": 0.9799,
-"nie": 0.0024,
-"nw": 0.0177
+"tak": 0.9673,
+"nie": 0.0026,
+"nw": 0.0302
 },
-"margin": 0.9622
+"margin": 0.9371
 }
 },
 {
-"id": "l11f5dbde",
+"id": "lc444ebfc",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„krowa : cielę = kot : ? Wybierz jedno słowo: dół, igła, kocię, ul.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli lampka F świeci, to lampka A świeci. Jeśli lampka A świeci, to lampka E świeci. Wiadomo, że lampka F świeci. Czy lampka E świeci?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9699,
+"nie": 0.0017,
+"nw": 0.0284
+},
+"margin": 0.9415
+}
+},
+{
+"id": "l20134cf6",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Iza ma 161 cm wzrostu, Marta ma 170 cm, a Basia ma 151 cm. Kto jest najniższy? Podaj imię.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9699,
+"nie": 0.0026,
+"nw": 0.0275
+},
+"margin": 0.9424
+}
+},
+{
+"id": "lb7209b03",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Janek ma 191 cm wzrostu, Adam ma 178 cm, a Basia ma 188 cm. Kto jest najniższy? Podaj imię.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9709,
+"nie": 0.0024,
+"nw": 0.0267
+},
+"margin": 0.9442
+}
+},
+{
+"id": "lb5419c4e",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Jeśli lampka H świeci, to lampka G świeci. Jeśli lampka G świeci, to lampka D świeci. Wiadomo, że lampka D nie świeci. Czy lampka H świeci?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9718,
+"nie": 0.0019,
+"nw": 0.0262
+},
+"margin": 0.9456
+}
+},
+{
+"id": "lebd72e20",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Wszystkie tulipany to kwiaty. Ewa hoduje kwiaty. Czy Ewa hoduje tulipany?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9728,
+"nie": 0.004,
+"nw": 0.0233
+},
+"margin": 0.9495
+}
+},
+{
+"id": "l97eb8271",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Wszystkie tulipany to kwiaty. Basia hoduje kwiaty. Czy Basia hoduje tulipany?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9756,
+"nie": 0.0028,
+"nw": 0.0217
+},
+"margin": 0.9539
+}
+},
+{
+"id": "l77b18708",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Iza miała 14 jabłek i dostała jeszcze 32 od Darka. Ile jabłek ma teraz Iza?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9771,
+"nie": 0.0022,
+"nw": 0.0206
+},
+"margin": 0.9565
+}
+},
+{
+"id": "ldc7f2c3c",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Wszystkie karpie to ryby. Janek nie hoduje żadnych ryb. Czy Janek hoduje karpie?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9771,
+"nie": 0.0038,
+"nw": 0.019
+},
+"margin": 0.9581
+}
+},
+{
+"id": "l135e2056",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Zawsze gdy piec przestał działać, to w domu zrobiło się zimno. Tym razem okazało się, że nieprawda, że w domu zrobiło się zimno. Czy piec przestał działać?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9776,
+"nie": 0.0045,
+"nw": 0.018
+},
+"margin": 0.9596
+}
+},
+{
+"id": "le3497eba",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Kwiaty Filipowi dał Bartek. Komu dano? Podaj imię w mianowniku.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9787,
+"nie": 0.003,
+"nw": 0.0183
+},
+"margin": 0.9604
+}
+},
+{
+"id": "lb4fd000c",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Wszystkie jamniki to psy. Basia nie hoduje żadnych psów. Czy Basia hoduje jamniki?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.978,
+"nie": 0.0051,
+"nw": 0.0169
+},
+"margin": 0.9611
+}
+},
+{
+"id": "l83cea45c",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Filip przyszedł wcześniej niż Ala. Ala przyszła wcześniej niż Adam. Kto przyszedł ostatni? Podaj imię.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -1887,48 +1535,16 @@
 "model": {
 "p": {
 "tak": 0.9804,
-"nie": 0.0029,
-"nw": 0.0166
-},
-"margin": 0.9638
-}
-},
-{
-"id": "l131ceb42",
-"kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Bartek dał Darkowi kwiaty. Komu dano? Podaj imię w mianowniku.”",
-"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-},
-{
-"v": "zle",
-"label": "pytanie jest złe"
-}
-],
-"model": {
-"p": {
-"tak": 0.9813,
 "nie": 0.0022,
-"nw": 0.0165
+"nw": 0.0175
 },
-"margin": 0.9648
+"margin": 0.9629
 }
 },
 {
-"id": "l503645cd",
+"id": "ld71bad29",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„malarz : pędzel = rybak : ? Wybierz jedno słowo: kurczę, noc, wędka, źrebię.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Ewa ma 155 cm wzrostu, Ala ma 182 cm, a Basia ma 169 cm. Kto jest najwyższy? Podaj imię.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -1950,17 +1566,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.9816,
-"nie": 0.0023,
-"nw": 0.0162
+"tak": 0.9807,
+"nie": 0.0014,
+"nw": 0.0178
 },
-"margin": 0.9654
+"margin": 0.9629
 }
 },
 {
-"id": "l9e4cf35d",
+"id": "labc2df7f",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Basia przyszła wcześniej niż Marta. Marta przyszła wcześniej niż Iza. Kto przyszedł ostatni? Podaj imię.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Uzupełnij: 8 … (książka). Wybierz jedną formę: książek, książka, książki.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -1982,17 +1598,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.9839,
-"nie": 0.0025,
-"nw": 0.0136
+"tak": 0.98,
+"nie": 0.004,
+"nw": 0.016
 },
-"margin": 0.9703
+"margin": 0.964
 }
 },
 {
-"id": "ld04d2010",
+"id": "lfdeab230",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Janek miał 52 zł i oddał 30 zł Bartkowi. Ile złotych zostało Jankowi?”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Uzupełnij: 9 … (dom). Wybierz jedną formę: dom, domy, domów.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -2014,17 +1630,273 @@
 ],
 "model": {
 "p": {
-"tak": 0.9852,
-"nie": 0.0009,
-"nw": 0.0139
+"tak": 0.9803,
+"nie": 0.0036,
+"nw": 0.0161
+},
+"margin": 0.9642
+}
+},
+{
+"id": "l41915308",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Basia przeczytała książkę. Czy Basia skończyła tę czynność?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9807,
+"nie": 0.0031,
+"nw": 0.0161
+},
+"margin": 0.9646
+}
+},
+{
+"id": "lf39d5175",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Adam czytał książkę, ale przerwał w połowie. Czy Adam przeczytał książkę?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9801,
+"nie": 0.0048,
+"nw": 0.0151
+},
+"margin": 0.965
+}
+},
+{
+"id": "lb941bd91",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Adam czytał książkę. Czy Adam skończył tę czynność?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9811,
+"nie": 0.003,
+"nw": 0.0159
+},
+"margin": 0.9652
+}
+},
+{
+"id": "l22be8f8d",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Janek jadł obiad. Czy Janek skończył tę czynność?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9819,
+"nie": 0.0027,
+"nw": 0.0155
+},
+"margin": 0.9664
+}
+},
+{
+"id": "l1618fca6",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Uzupełnij: 2 … (krzesło). Wybierz jedną formę: krzeseł, krzesła, krzesło.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9832,
+"nie": 0.003,
+"nw": 0.0138
+},
+"margin": 0.9694
+}
+},
+{
+"id": "l17c2e2a3",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Ewa miała 28 jabłek i dostała jeszcze 38 od Izy. Ile jabłek ma teraz Ewa?”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9842,
+"nie": 0.0015,
+"nw": 0.0142
+},
+"margin": 0.97
+}
+},
+{
+"id": "l3e072c6b",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Marta przyszła wcześniej niż Janek. Janek przyszedł wcześniej niż Basia. Kto przyszedł pierwszy? Podaj imię.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9842,
+"nie": 0.0024,
+"nw": 0.0134
+},
+"margin": 0.9708
+}
+},
+{
+"id": "lffe8a0bd",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„koń : stajnia = pszczoła : ? Wybierz jedno słowo: koniec, kurczę, pędzel, ul.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9844,
+"nie": 0.0026,
+"nw": 0.0131
 },
 "margin": 0.9713
 }
 },
 {
-"id": "l7c04389d",
+"id": "ld3a5fa56",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„wejście : wyjście = góra : ? Wybierz jedno słowo: dół, kocię, stajnia, szczenię.”",
+"q": "Czy to brzmi naturalnie po polsku?\n„kura : kurczę = koń : ? Wybierz jedno słowo: koniec, nożyczki, wyjście, źrebię.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -2046,17 +1918,145 @@
 ],
 "model": {
 "p": {
-"tak": 0.9858,
+"tak": 0.9865,
+"nie": 0.0022,
+"nw": 0.0113
+},
+"margin": 0.9752
+}
+},
+{
+"id": "l261c7859",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„drwal : siekiera = malarz : ? Wybierz jedno słowo: dół, jagnię, pędzel, zimno.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9863,
+"nie": 0.0027,
+"nw": 0.011
+},
+"margin": 0.9753
+}
+},
+{
+"id": "lbf57831d",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„koń : źrebię = kura : ? Wybierz jedno słowo: dół, fałsz, kurczę, siekiera.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9874,
+"nie": 0.0017,
+"nw": 0.0109
+},
+"margin": 0.9765
+}
+},
+{
+"id": "l675d14ab",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„Jaka liczba jest następna w ciągu: 7, 10, 13, 16, ? Podaj liczbę.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9882,
+"nie": 0.0009,
+"nw": 0.0109
+},
+"margin": 0.9773
+}
+},
+{
+"id": "l96e992d8",
+"kind": "naturalność",
+"q": "Czy to brzmi naturalnie po polsku?\n„lis : nora = ptak : ? Wybierz jedno słowo: gniazdo, igła, nożyczki, szczenię.”",
+"why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+},
+{
+"v": "zle",
+"label": "pytanie jest złe"
+}
+],
+"model": {
+"p": {
+"tak": 0.9881,
 "nie": 0.0014,
-"nw": 0.0128
+"nw": 0.0105
 },
-"margin": 0.973
+"margin": 0.9776
 }
 },
 {
-"id": "lc1e91259",
+"id": "ld59c32ec",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„W 3 pudełkach jest po 34 kredek. Ile kredek jest razem?”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Jaka liczba jest następna w ciągu: 3, 8, 13, 18, ? Podaj liczbę.”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -2078,17 +2078,17 @@
 ],
 "model": {
 "p": {
-"tak": 0.9864,
-"nie": 0.0013,
-"nw": 0.0123
+"tak": 0.9887,
+"nie": 0.0008,
+"nw": 0.0105
 },
-"margin": 0.9741
+"margin": 0.9782
 }
 },
 {
-"id": "l8e851243",
+"id": "l88b3ba88",
 "kind": "naturalność",
-"q": "Czy to brzmi naturalnie po polsku?\n„Janek miał 8 zł i oddał 7 zł Izie. Ile złotych zostało Jankowi?”",
+"q": "Czy to brzmi naturalnie po polsku?\n„Ewa miała 21 zł i oddała 2 zł Jankowi. Ile złotych zostało Ewie?”",
 "why": "zdanie złożył program z szablonu – tylko człowiek oceni, czy tak się mówi",
 "options": [
 {
@@ -2110,45 +2110,20 @@
 ],
 "model": {
 "p": {
-"tak": 0.99,
-"nie": 0.0006,
-"nw": 0.0094
+"tak": 0.9903,
+"nie": 0.0009,
+"nw": 0.0088
 },
-"margin": 0.9806
+"margin": 0.9815
 }
 }
 ],
 "control": [
 {
-"id": "l6de4048a",
-"kind": "analogia",
+"id": "l2b67cfa0",
+"kind": "nie wszystkie",
 "level": 1,
-"q": "ciepło : zimno = wejście : ? Wybierz jedno słowo: kurczę, pióro, stajnia, wyjście.",
-"options": [
-{
-"v": "a",
-"label": "kurczę"
-},
-{
-"v": "b",
-"label": "pióro"
-},
-{
-"v": "c",
-"label": "stajnia"
-},
-{
-"v": "d",
-"label": "wyjście"
-}
-],
-"model_acc": 0.2581
-},
-{
-"id": "lf86ce666",
-"kind": "negacja",
-"level": 1,
-"q": "Wiadomo, że nieprawda, że nieprawda, że ulica jest mokra. Czy ulica jest mokra? Odpowiedz: tak, nie albo nie wiadomo.",
+"q": "Nie wszystkie wróble są głośne. Czy niektóre wróble nie są głośne? Odpowiedz: tak, nie albo nie wiadomo.",
 "options": [
 {
 "v": "tak",
@@ -2163,13 +2138,470 @@
 "label": "nie wiadomo"
 }
 ],
-"model_acc": 0.125
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "lc977225a",
+"id": "lfd42f987",
+"kind": "aspekt",
+"level": 1,
+"q": "Adam przeczytał książkę. Czy Adam skończył tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.339,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l1f50c11c",
+"kind": "łańcuch",
+"level": 1,
+"q": "Jeśli lampka G świeci, to lampka B świeci. Jeśli lampka B świeci, to lampka E świeci. Wiadomo, że lampka G świeci. Czy lampka E świeci? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l1be2cced",
+"kind": "porządek",
+"level": 1,
+"q": "Marta ma 151 cm wzrostu, Iza ma 181 cm, a Ewa ma 199 cm. Kto jest najwyższy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Ewa"
+},
+{
+"v": "b",
+"label": "Iza"
+},
+{
+"v": "c",
+"label": "Marta"
+}
+],
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l96f74087",
+"kind": "aspekt",
+"level": 1,
+"q": "Adam czytał książkę, ale przerwał w połowie. Czy Adam przeczytał książkę? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.339,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lfa7ed4be",
+"kind": "aspekt",
+"level": 1,
+"q": "Adam czytał książkę. Czy Adam skończył tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.339,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l2632abb1",
 "kind": "analogia",
 "level": 1,
-"q": "koń : źrebię = krowa : ? Wybierz jedno słowo: cielę, gniazdo, igła, stajnia.",
+"q": "pszczoła : ul = krowa : ? Wybierz jedno słowo: cielę, obora, wyjście, źrebię.",
+"options": [
+{
+"v": "a",
+"label": "cielę"
+},
+{
+"v": "b",
+"label": "obora"
+},
+{
+"v": "c",
+"label": "wyjście"
+},
+{
+"v": "d",
+"label": "źrebię"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lce508f00",
+"kind": "liczebniki",
+"level": 1,
+"q": "Uzupełnij: 9 … (jabłko). Wybierz jedną formę: jabłek, jabłka, jabłko.",
+"options": [
+{
+"v": "a",
+"label": "jabłek"
+},
+{
+"v": "b",
+"label": "jabłka"
+},
+{
+"v": "c",
+"label": "jabłko"
+}
+],
+"model_acc": 0.069,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l533d7167",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie tulipany to kwiaty. Marta hoduje tulipany. Czy Marta hoduje kwiaty? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "la1d5a4c0",
+"kind": "aspekt",
+"level": 1,
+"q": "Filip pomalował płot. Czy Filip skończył tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.339,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l439e76d7",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie jamniki to psy. Basia nie hoduje żadnych psów. Czy Basia hoduje jamniki? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "la8a32f4f",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie karpie to ryby. Bartek hoduje ryby. Czy Bartek hoduje karpie? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l7a0e9462",
+"kind": "analogia",
+"level": 1,
+"q": "drwal : siekiera = malarz : ? Wybierz jedno słowo: dół, jagnię, pędzel, zimno.",
+"options": [
+{
+"v": "a",
+"label": "dół"
+},
+{
+"v": "b",
+"label": "jagnię"
+},
+{
+"v": "c",
+"label": "pędzel"
+},
+{
+"v": "d",
+"label": "zimno"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lc2b3f4e9",
+"kind": "analogia",
+"level": 1,
+"q": "ciepło : zimno = prawda : ? Wybierz jedno słowo: fałsz, obora, ul, źrebię.",
+"options": [
+{
+"v": "a",
+"label": "fałsz"
+},
+{
+"v": "b",
+"label": "obora"
+},
+{
+"v": "c",
+"label": "ul"
+},
+{
+"v": "d",
+"label": "źrebię"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lbb2df2bd",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie pszczoły to owady. Iza hoduje pszczoły. Czy Iza hoduje owady? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lc354b819",
+"kind": "analogia",
+"level": 1,
+"q": "wejście : wyjście = dzień : ? Wybierz jedno słowo: igła, noc, siekiera, wędka.",
+"options": [
+{
+"v": "a",
+"label": "igła"
+},
+{
+"v": "b",
+"label": "noc"
+},
+{
+"v": "c",
+"label": "siekiera"
+},
+{
+"v": "d",
+"label": "wędka"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l31b0e443",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Ewa przyszła wcześniej niż Filip. Filip przyszedł wcześniej niż Marta. Kto przyszedł ostatni? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Ewa"
+},
+{
+"v": "b",
+"label": "Filip"
+},
+{
+"v": "c",
+"label": "Marta"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "la9d04b3c",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Adam przyszedł wcześniej niż Ala. Ala przyszła wcześniej niż Filip. Kto przyszedł ostatni? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Adam"
+},
+{
+"v": "b",
+"label": "Ala"
+},
+{
+"v": "c",
+"label": "Filip"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l900ea939",
+"kind": "aspekt",
+"level": 1,
+"q": "Marta jadła obiad, ale przerwała w połowie. Czy Marta zjadła obiad? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.339,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "le6c35c87",
+"kind": "porządek",
+"level": 1,
+"q": "Ewa ma 167 cm wzrostu, Bartek ma 185 cm, a Filip ma 168 cm. Kto jest najniższy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Bartek"
+},
+{
+"v": "b",
+"label": "Ewa"
+},
+{
+"v": "c",
+"label": "Filip"
+}
+],
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l266aa987",
+"kind": "liczebniki",
+"level": 1,
+"q": "Uzupełnij: 3 … (książka). Wybierz jedną formę: książek, książka, książki.",
+"options": [
+{
+"v": "a",
+"label": "książek"
+},
+{
+"v": "b",
+"label": "książka"
+},
+{
+"v": "c",
+"label": "książki"
+}
+],
+"model_acc": 0.069,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "ld359c252",
+"kind": "analogia",
+"level": 1,
+"q": "początek : koniec = dzień : ? Wybierz jedno słowo: cielę, gniazdo, noc, siekiera.",
 "options": [
 {
 "v": "a",
@@ -2181,41 +2613,21 @@
 },
 {
 "v": "c",
-"label": "igła"
+"label": "noc"
 },
 {
 "v": "d",
-"label": "stajnia"
+"label": "siekiera"
 }
 ],
-"model_acc": 0.2581
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l75fc2e02",
-"kind": "łańcuch",
-"level": 1,
-"q": "Jeśli lampka F świeci, to lampka G świeci. Jeśli lampka G świeci, to lampka E świeci. Wiadomo, że lampka F świeci. Czy lampka E świeci? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "l521bd598",
+"id": "ld077f7e9",
 "kind": "sylogizm",
 "level": 1,
-"q": "Wszystkie dęby to drzewa. Ala hoduje dęby. Czy Ala hoduje drzewa? Odpowiedz: tak, nie albo nie wiadomo.",
+"q": "Wszystkie róże to rośliny. Bartek nie hoduje żadnych roślin. Czy Bartek hoduje róże? Odpowiedz: tak, nie albo nie wiadomo.",
 "options": [
 {
 "v": "tak",
@@ -2230,101 +2642,110 @@
 "label": "nie wiadomo"
 }
 ],
-"model_acc": 0.2333
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l5262d918",
-"kind": "sylogizm",
-"level": 1,
-"q": "Wszystkie dęby to drzewa. Ewa nie hoduje żadnych drzew. Czy Ewa hoduje dęby? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.2333
-},
-{
-"id": "l2e8e7814",
-"kind": "aspekt",
-"level": 1,
-"q": "Ewa napisała list. Czy Ewa skończyła tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "l767d1f0a",
-"kind": "warunki",
-"level": 1,
-"q": "Jeśli jest niedziela, to sklep jest zamknięty. Wiadomo, że jest niedziela. Czy sklep jest zamknięty? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.1
-},
-{
-"id": "lacaacbb6",
-"kind": "sylogizm",
-"level": 1,
-"q": "Wszystkie wróble to ptaki. Ewa hoduje ptaki. Czy Ewa hoduje wróble? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.2333
-},
-{
-"id": "l4ca3e116",
+"id": "lef475cd6",
 "kind": "analogia",
 "level": 1,
-"q": "dzień : noc = początek : ? Wybierz jedno słowo: jagnię, koniec, nora, stajnia.",
+"q": "początek : koniec = dzień : ? Wybierz jedno słowo: gniazdo, kocię, noc, ul.",
 "options": [
 {
 "v": "a",
-"label": "jagnię"
+"label": "gniazdo"
+},
+{
+"v": "b",
+"label": "kocię"
+},
+{
+"v": "c",
+"label": "noc"
+},
+{
+"v": "d",
+"label": "ul"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "le08e10e4",
+"kind": "porządek",
+"level": 1,
+"q": "Iza ma 196 cm wzrostu, Ewa ma 171 cm, a Filip ma 190 cm. Kto jest najwyższy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Ewa"
+},
+{
+"v": "b",
+"label": "Filip"
+},
+{
+"v": "c",
+"label": "Iza"
+}
+],
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l420d878e",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Basia przyszła wcześniej niż Ewa. Ewa przyszła wcześniej niż Marta. Kto przyszedł pierwszy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Basia"
+},
+{
+"v": "b",
+"label": "Ewa"
+},
+{
+"v": "c",
+"label": "Marta"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l188d560f",
+"kind": "nie wszystkie",
+"level": 1,
+"q": "Nie wszystkie karpie są głośne. Czy wszystkie karpie są głośne? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lb8c6cd07",
+"kind": "analogia",
+"level": 1,
+"q": "koń : stajnia = lis : ? Wybierz jedno słowo: fałsz, koniec, nora, źrebię.",
+"options": [
+{
+"v": "a",
+"label": "fałsz"
 },
 {
 "v": "b",
@@ -2336,100 +2757,43 @@
 },
 {
 "v": "d",
-"label": "stajnia"
+"label": "źrebię"
 }
 ],
-"model_acc": 0.2581
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l5c2e6cee",
-"kind": "sylogizm",
+"id": "ldf15b431",
+"kind": "analogia",
 "level": 1,
-"q": "Wszystkie karpie to ryby. Marta hoduje karpie. Czy Marta hoduje ryby? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.2333
-},
-{
-"id": "le1f8f2af",
-"kind": "liczebniki",
-"level": 1,
-"q": "Uzupełnij: 6 … (krzesło). Wybierz jedną formę: krzeseł, krzesła, krzesło.",
+"q": "góra : dół = dzień : ? Wybierz jedno słowo: jagnię, noc, nora, ul.",
 "options": [
 {
 "v": "a",
-"label": "krzeseł"
+"label": "jagnię"
 },
 {
 "v": "b",
-"label": "krzesła"
+"label": "noc"
 },
 {
 "v": "c",
-"label": "krzesło"
+"label": "nora"
+},
+{
+"v": "d",
+"label": "ul"
 }
 ],
-"model_acc": 0.1429
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l568737b8",
-"kind": "sylogizm",
-"level": 1,
-"q": "Wszystkie tulipany to kwiaty. Darek nie hoduje żadnych kwiatów. Czy Darek hoduje tulipany? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.2333
-},
-{
-"id": "le2bf5fe0",
-"kind": "warunki",
-"level": 1,
-"q": "Jeśli pada deszcz, to ulica jest mokra. Wiadomo, że ulica nie jest mokra. Czy pada deszcz? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.1
-},
-{
-"id": "lf6056d73",
+"id": "lbeeeac37",
 "kind": "aspekt",
 "level": 1,
-"q": "Ala malowała płot, ale przerwała w połowie. Czy Ala pomalowała płot? Odpowiedz: tak, nie albo nie wiadomo.",
+"q": "Janek pisał list. Czy Janek skończył tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
 "options": [
 {
 "v": "tak",
@@ -2444,206 +2808,66 @@
 "label": "nie wiadomo"
 }
 ],
-"model_acc": 0.4583
+"model_acc": 0.339,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l8aa11d16",
-"kind": "liczebniki",
+"id": "l5dd3ccf9",
+"kind": "łańcuch",
 "level": 1,
-"q": "Uzupełnij: 7 … (krzesło). Wybierz jedną formę: krzeseł, krzesła, krzesło.",
+"q": "Jeśli lampka E świeci, to lampka F świeci. Jeśli lampka F świeci, to lampka H świeci. Wiadomo, że lampka H nie świeci. Czy lampka E świeci? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l8ac833b8",
+"kind": "analogia",
+"level": 1,
+"q": "pies : buda = koń : ? Wybierz jedno słowo: siekiera, stajnia, zimno, źrebię.",
 "options": [
 {
 "v": "a",
-"label": "krzeseł"
+"label": "siekiera"
 },
 {
 "v": "b",
-"label": "krzesła"
+"label": "stajnia"
 },
 {
 "v": "c",
-"label": "krzesło"
-}
-],
-"model_acc": 0.1429
+"label": "zimno"
 },
 {
-"id": "l4bf000e6",
+"v": "d",
+"label": "źrebię"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l75ca1ea5",
 "kind": "porządek",
 "level": 1,
-"q": "Iza ma 187 cm wzrostu, Ala ma 169 cm, a Adam ma 160 cm. Kto jest najniższy? Podaj imię.",
+"q": "Iza ma 164 cm wzrostu, Adam ma 199 cm, a Basia ma 195 cm. Kto jest najwyższy? Podaj imię.",
 "options": [
 {
 "v": "a",
 "label": "Adam"
-},
-{
-"v": "b",
-"label": "Ala"
-},
-{
-"v": "c",
-"label": "Iza"
-}
-],
-"model_acc": 0.28
-},
-{
-"id": "le37be6cd",
-"kind": "porządek",
-"level": 1,
-"q": "Darek ma 162 cm wzrostu, Ala ma 154 cm, a Janek ma 193 cm. Kto jest najniższy? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Ala"
-},
-{
-"v": "b",
-"label": "Darek"
-},
-{
-"v": "c",
-"label": "Janek"
-}
-],
-"model_acc": 0.28
-},
-{
-"id": "l56df05ac",
-"kind": "sprzeczność",
-"level": 1,
-"q": "Czy zdania „niektóre koty są duże” oraz „niektóre koty nie są duże” mogą być jednocześnie prawdziwe? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.5556
-},
-{
-"id": "lcfe0ecc6",
-"kind": "nie wszystkie",
-"level": 1,
-"q": "Nie wszystkie koty są głośne. Czy niektóre koty nie są głośne? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "lf28d869c",
-"kind": "liczebniki",
-"level": 1,
-"q": "Uzupełnij: 4 … (krzesło). Wybierz jedną formę: krzeseł, krzesła, krzesło.",
-"options": [
-{
-"v": "a",
-"label": "krzeseł"
-},
-{
-"v": "b",
-"label": "krzesła"
-},
-{
-"v": "c",
-"label": "krzesło"
-}
-],
-"model_acc": 0.1429
-},
-{
-"id": "lf0266d74",
-"kind": "kwantyfikatory",
-"level": 1,
-"q": "Niektóre koty są głośne. Czy jakieś koty są głośne? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.3684
-},
-{
-"id": "lb6926de9",
-"kind": "łańcuch",
-"level": 1,
-"q": "Jeśli lampka C świeci, to lampka E świeci. Jeśli lampka E świeci, to lampka H świeci. Wiadomo, że lampka H nie świeci. Czy lampka C świeci? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "l5c6f925e",
-"kind": "aspekt",
-"level": 1,
-"q": "Ala pisała list. Czy Ala skończyła tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "lfb09c178",
-"kind": "porządek",
-"level": 1,
-"q": "Ala ma 197 cm wzrostu, Basia ma 158 cm, a Janek ma 162 cm. Kto jest najniższy? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Ala"
 },
 {
 "v": "b",
@@ -2651,238 +2875,25 @@
 },
 {
 "v": "c",
-"label": "Janek"
+"label": "Iza"
 }
 ],
-"model_acc": 0.28
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l272479af",
-"kind": "aspekt",
-"level": 1,
-"q": "Ewa przeczytała książkę. Czy Ewa skończyła tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "l1e2b87f0",
-"kind": "warunki",
-"level": 1,
-"q": "Jeśli jest niedziela, to sklep jest zamknięty. Wiadomo, że sklep jest zamknięty. Czy jest niedziela? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.1
-},
-{
-"id": "l89849606",
-"kind": "przyczyna",
-"level": 1,
-"q": "Ponieważ piec przestał działać, w domu zrobiło się zimno. Wiadomo, że piec przestał działać. Czy w domu zrobiło się zimno? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "le93a1b17",
-"kind": "aspekt",
-"level": 1,
-"q": "Marta czytała książkę, ale przerwała w połowie. Czy Marta przeczytała książkę? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "lfb9f3a02",
-"kind": "porządek",
-"level": 1,
-"q": "Adam ma 174 cm wzrostu, Filip ma 199 cm, a Janek ma 159 cm. Kto jest najniższy? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Adam"
-},
-{
-"v": "b",
-"label": "Filip"
-},
-{
-"v": "c",
-"label": "Janek"
-}
-],
-"model_acc": 0.28
-},
-{
-"id": "lb93b7835",
-"kind": "sylogizm",
-"level": 1,
-"q": "Wszystkie dęby to drzewa. Bartek hoduje drzewa. Czy Bartek hoduje dęby? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.2333
-},
-{
-"id": "le8b36a6e",
+"id": "l51f190e2",
 "kind": "analogia",
 "level": 1,
-"q": "kot : kocię = krowa : ? Wybierz jedno słowo: cielę, dół, koniec, zimno.",
+"q": "koń : stajnia = pszczoła : ? Wybierz jedno słowo: koniec, kurczę, pędzel, ul.",
 "options": [
 {
 "v": "a",
-"label": "cielę"
-},
-{
-"v": "b",
-"label": "dół"
-},
-{
-"v": "c",
 "label": "koniec"
 },
 {
-"v": "d",
-"label": "zimno"
-}
-],
-"model_acc": 0.2581
-},
-{
-"id": "lc31310f6",
-"kind": "warunki",
-"level": 1,
-"q": "Jeśli pada deszcz, to ulica jest mokra. Wiadomo, że pada deszcz. Czy ulica jest mokra? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.1
-},
-{
-"id": "l39c655d8",
-"kind": "kwantyfikatory",
-"level": 1,
-"q": "Wszystkie jamniki są małe (każdy osobnik). Czy jakieś jamniki są duże? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.3684
-},
-{
-"id": "l3d9079c0",
-"kind": "porządek",
-"level": 1,
-"q": "Darek ma 181 cm wzrostu, Iza ma 191 cm, a Marta ma 153 cm. Kto jest najniższy? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Darek"
-},
-{
 "v": "b",
-"label": "Iza"
-},
-{
-"v": "c",
-"label": "Marta"
-}
-],
-"model_acc": 0.28
-},
-{
-"id": "l7d2339ef",
-"kind": "analogia",
-"level": 1,
-"q": "lis : nora = pies : ? Wybierz jedno słowo: buda, cielę, pędzel, szczenię.",
-"options": [
-{
-"v": "a",
-"label": "buda"
-},
-{
-"v": "b",
-"label": "cielę"
+"label": "kurczę"
 },
 {
 "v": "c",
@@ -2890,121 +2901,17 @@
 },
 {
 "v": "d",
-"label": "szczenię"
+"label": "ul"
 }
 ],
-"model_acc": 0.2581
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l5fbc4c15",
-"kind": "aspekt",
-"level": 1,
-"q": "Ala malowała płot. Czy Ala skończyła tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "lb1ee1ab1",
-"kind": "sprzeczność",
-"level": 1,
-"q": "Czy zdania „Ala zostaje w domu” oraz „Ala nie zostaje w domu” mogą być jednocześnie prawdziwe? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.5556
-},
-{
-"id": "l63f715bd",
-"kind": "kolejność w czasie",
-"level": 1,
-"q": "Basia przyszła wcześniej niż Marta. Marta przyszła wcześniej niż Iza. Kto przyszedł ostatni? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Basia"
-},
-{
-"v": "b",
-"label": "Iza"
-},
-{
-"v": "c",
-"label": "Marta"
-}
-],
-"model_acc": 0.3333
-},
-{
-"id": "lf62f6d1e",
-"kind": "przyczyna",
-"level": 1,
-"q": "Zawsze gdy rzeka wylała, to droga została zamknięta. Tym razem okazało się, że nieprawda, że droga została zamknięta. Czy rzeka wylała? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "lb4abe8d9",
-"kind": "kolejność w czasie",
-"level": 1,
-"q": "Adam przyszedł wcześniej niż Filip. Filip przyszedł wcześniej niż Janek. Kto przyszedł ostatni? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Adam"
-},
-{
-"v": "b",
-"label": "Filip"
-},
-{
-"v": "c",
-"label": "Janek"
-}
-],
-"model_acc": 0.3333
-},
-{
-"id": "l3b0c677c",
+"id": "l2905359d",
 "kind": "porządek",
 "level": 1,
-"q": "Marta ma 174 cm wzrostu, Bartek ma 169 cm, a Janek ma 182 cm. Kto jest najniższy? Podaj imię.",
+"q": "Ewa ma 161 cm wzrostu, Bartek ma 199 cm, a Marta ma 176 cm. Kto jest najwyższy? Podaj imię.",
 "options": [
 {
 "v": "a",
@@ -3012,20 +2919,21 @@
 },
 {
 "v": "b",
-"label": "Janek"
+"label": "Ewa"
 },
 {
 "v": "c",
 "label": "Marta"
 }
 ],
-"model_acc": 0.28
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l2d5c6659",
-"kind": "porządek",
+"id": "l718c0f28",
+"kind": "kolejność w czasie",
 "level": 1,
-"q": "Iza ma 161 cm wzrostu, Basia ma 198 cm, a Darek ma 185 cm. Kto jest najniższy? Podaj imię.",
+"q": "Marta przyszła wcześniej niż Janek. Janek przyszedł wcześniej niż Basia. Kto przyszedł pierwszy? Podaj imię.",
 "options": [
 {
 "v": "a",
@@ -3033,322 +2941,517 @@
 },
 {
 "v": "b",
-"label": "Darek"
+"label": "Janek"
 },
 {
 "v": "c",
-"label": "Iza"
+"label": "Marta"
 }
 ],
-"model_acc": 0.28
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l6d506e3e",
-"kind": "analogia",
+"id": "l89283739",
+"kind": "kolejność w czasie",
 "level": 1,
-"q": "rybak : wędka = drwal : ? Wybierz jedno słowo: dół, obora, siekiera, stajnia.",
+"q": "Ala przyszła wcześniej niż Bartek. Bartek przyszedł wcześniej niż Darek. Kto przyszedł pierwszy? Podaj imię.",
 "options": [
 {
 "v": "a",
-"label": "dół"
+"label": "Ala"
 },
 {
 "v": "b",
-"label": "obora"
+"label": "Bartek"
 },
 {
 "v": "c",
-"label": "siekiera"
+"label": "Darek"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l061c6252",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie dęby to drzewa. Marta hoduje drzewa. Czy Marta hoduje dęby? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lc52537e0",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Ala przyszła wcześniej niż Janek. Janek przyszedł wcześniej niż Bartek. Kto przyszedł ostatni? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Ala"
+},
+{
+"v": "b",
+"label": "Bartek"
+},
+{
+"v": "c",
+"label": "Janek"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lb193147a",
+"kind": "przyczyna",
+"level": 1,
+"q": "Ponieważ zepsuł się autobus, Janek poszedł pieszo. Wiadomo, że zepsuł się autobus. Czy Janek poszedł pieszo? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1111,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lc1446b9d",
+"kind": "przyczyna",
+"level": 1,
+"q": "Zawsze gdy piec przestał działać, to w domu zrobiło się zimno. Tym razem okazało się, że nieprawda, że w domu zrobiło się zimno. Czy piec przestał działać? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1111,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lc55fb436",
+"kind": "liczebniki",
+"level": 1,
+"q": "Uzupełnij: 9 … (dom). Wybierz jedną formę: dom, domy, domów.",
+"options": [
+{
+"v": "a",
+"label": "dom"
+},
+{
+"v": "b",
+"label": "domy"
+},
+{
+"v": "c",
+"label": "domów"
+}
+],
+"model_acc": 0.069,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l01e13d2e",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Marta przyszła wcześniej niż Ala. Ala przyszła wcześniej niż Ewa. Kto przyszedł pierwszy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Ala"
+},
+{
+"v": "b",
+"label": "Ewa"
+},
+{
+"v": "c",
+"label": "Marta"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l5471e0e6",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Filip przyszedł wcześniej niż Ala. Ala przyszła wcześniej niż Adam. Kto przyszedł ostatni? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Adam"
+},
+{
+"v": "b",
+"label": "Ala"
+},
+{
+"v": "c",
+"label": "Filip"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l1679e115",
+"kind": "liczebniki",
+"level": 1,
+"q": "Uzupełnij: 9 … (krzesło). Wybierz jedną formę: krzeseł, krzesła, krzesło.",
+"options": [
+{
+"v": "a",
+"label": "krzeseł"
+},
+{
+"v": "b",
+"label": "krzesła"
+},
+{
+"v": "c",
+"label": "krzesło"
+}
+],
+"model_acc": 0.069,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l971ac97c",
+"kind": "liczebniki",
+"level": 1,
+"q": "Uzupełnij: 6 … (dom). Wybierz jedną formę: dom, domy, domów.",
+"options": [
+{
+"v": "a",
+"label": "dom"
+},
+{
+"v": "b",
+"label": "domy"
+},
+{
+"v": "c",
+"label": "domów"
+}
+],
+"model_acc": 0.069,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l0316e883",
+"kind": "liczebniki",
+"level": 1,
+"q": "Uzupełnij: 2 … (krzesło). Wybierz jedną formę: krzeseł, krzesła, krzesło.",
+"options": [
+{
+"v": "a",
+"label": "krzeseł"
+},
+{
+"v": "b",
+"label": "krzesła"
+},
+{
+"v": "c",
+"label": "krzesło"
+}
+],
+"model_acc": 0.069,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l8ee1e028",
+"kind": "analogia",
+"level": 1,
+"q": "kura : kurczę = koń : ? Wybierz jedno słowo: koniec, nożyczki, wyjście, źrebię.",
+"options": [
+{
+"v": "a",
+"label": "koniec"
+},
+{
+"v": "b",
+"label": "nożyczki"
+},
+{
+"v": "c",
+"label": "wyjście"
 },
 {
 "v": "d",
-"label": "stajnia"
+"label": "źrebię"
 }
 ],
-"model_acc": 0.2581
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l2f5eb6c4",
+"id": "ledd0fc96",
+"kind": "łańcuch",
+"level": 1,
+"q": "Jeśli lampka D świeci, to lampka F świeci. Jeśli lampka F świeci, to lampka B świeci. Wiadomo, że lampka B świeci. Czy lampka D świeci? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l5b79caa9",
+"kind": "porządek",
+"level": 1,
+"q": "Ewa ma 155 cm wzrostu, Ala ma 182 cm, a Basia ma 169 cm. Kto jest najwyższy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Ala"
+},
+{
+"v": "b",
+"label": "Basia"
+},
+{
+"v": "c",
+"label": "Ewa"
+}
+],
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l85c921c4",
+"kind": "łańcuch",
+"level": 1,
+"q": "Jeśli lampka F świeci, to lampka C świeci. Jeśli lampka C świeci, to lampka E świeci. Wiadomo, że lampka F świeci. Czy lampka E świeci? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "le3e6c3cc",
+"kind": "łańcuch",
+"level": 1,
+"q": "Jeśli lampka A świeci, to lampka H świeci. Jeśli lampka H świeci, to lampka G świeci. Wiadomo, że lampka G nie świeci. Czy lampka A świeci? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "lfb812734",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie róże to rośliny. Marta hoduje róże. Czy Marta hoduje rośliny? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l6d87e5aa",
+"kind": "sylogizm",
+"level": 1,
+"q": "Wszystkie dęby to drzewa. Basia nie hoduje żadnych drzew. Czy Basia hoduje dęby? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.1667,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l39d0f3b6",
 "kind": "kolejność w czasie",
 "level": 1,
-"q": "Adam przyszedł wcześniej niż Iza. Iza przyszła wcześniej niż Marta. Kto przyszedł ostatni? Podaj imię.",
+"q": "Ewa przyszła wcześniej niż Iza. Iza przyszła wcześniej niż Darek. Kto przyszedł pierwszy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Darek"
+},
+{
+"v": "b",
+"label": "Ewa"
+},
+{
+"v": "c",
+"label": "Iza"
+}
+],
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l3668da38",
+"kind": "łańcuch",
+"level": 1,
+"q": "Jeśli lampka G świeci, to lampka B świeci. Jeśli lampka B świeci, to lampka C świeci. Wiadomo, że lampka C świeci. Czy lampka G świeci? Odpowiedz: tak, nie albo nie wiadomo.",
+"options": [
+{
+"v": "tak",
+"label": "tak"
+},
+{
+"v": "nie",
+"label": "nie"
+},
+{
+"v": "nw",
+"label": "nie wiadomo"
+}
+],
+"model_acc": 0.0,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l05de3408",
+"kind": "porządek",
+"level": 1,
+"q": "Iza ma 151 cm wzrostu, Filip ma 188 cm, a Basia ma 179 cm. Kto jest najwyższy? Podaj imię.",
+"options": [
+{
+"v": "a",
+"label": "Basia"
+},
+{
+"v": "b",
+"label": "Filip"
+},
+{
+"v": "c",
+"label": "Iza"
+}
+],
+"model_acc": 0.2174,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l9d2da1ed",
+"kind": "analogia",
+"level": 1,
+"q": "kura : kurczę = kot : ? Wybierz jedno słowo: buda, gniazdo, kocię, nora.",
+"options": [
+{
+"v": "a",
+"label": "buda"
+},
+{
+"v": "b",
+"label": "gniazdo"
+},
+{
+"v": "c",
+"label": "kocię"
+},
+{
+"v": "d",
+"label": "nora"
+}
+],
+"model_acc": 0.2292,
+"model_acc_from": "2026-10-25T01:29:47+0200"
+},
+{
+"id": "l941c0994",
+"kind": "kolejność w czasie",
+"level": 1,
+"q": "Adam przyszedł wcześniej niż Marta. Marta przyszła wcześniej niż Filip. Kto przyszedł ostatni? Podaj imię.",
 "options": [
 {
 "v": "a",
 "label": "Adam"
-},
-{
-"v": "b",
-"label": "Iza"
-},
-{
-"v": "c",
-"label": "Marta"
-}
-],
-"model_acc": 0.3333
-},
-{
-"id": "l907bbc59",
-"kind": "negacja",
-"level": 1,
-"q": "Wiadomo, że nieprawda, że ulica jest mokra. Czy ulica jest mokra? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.125
-},
-{
-"id": "l1bd87bb7",
-"kind": "sprzeczność",
-"level": 1,
-"q": "Czy zdania „niektóre tulipany są duże” oraz „niektóre tulipany nie są duże” mogą być jednocześnie prawdziwe? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.5556
-},
-{
-"id": "lce752237",
-"kind": "łańcuch",
-"level": 1,
-"q": "Jeśli lampka F świeci, to lampka C świeci. Jeśli lampka C świeci, to lampka E świeci. Wiadomo, że lampka E świeci. Czy lampka F świeci? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "l0c0a5f4b",
-"kind": "przyczyna",
-"level": 1,
-"q": "Jeśli rzeka wylała, to droga została zamknięta. Wiadomo, że droga została zamknięta. Czy na pewno rzeka wylała? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "laea64c06",
-"kind": "aspekt",
-"level": 1,
-"q": "Ala przeczytała książkę. Czy Ala skończyła tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "l1d183793",
-"kind": "aspekt",
-"level": 1,
-"q": "Darek pisał list, ale przerwał w połowie. Czy Darek napisał list? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "l24af388b",
-"kind": "warunki",
-"level": 1,
-"q": "Jeśli Ala ma gorączkę, to Ala zostaje w domu. Wiadomo, że Ala nie zostaje w domu. Czy Ala ma gorączkę? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.1
-},
-{
-"id": "la0a87747",
-"kind": "nie wszystkie",
-"level": 1,
-"q": "Nie wszystkie tulipany są głośne. Czy wszystkie tulipany są głośne? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "l53174b5a",
-"kind": "warunki",
-"level": 1,
-"q": "Jeśli pada deszcz, to ulica jest mokra. Wiadomo, że ulica jest mokra. Czy pada deszcz? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.1
-},
-{
-"id": "l1b91b163",
-"kind": "aspekt",
-"level": 1,
-"q": "Ewa czytała książkę. Czy Ewa skończyła tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.4583
-},
-{
-"id": "l52037e60",
-"kind": "przyczyna",
-"level": 1,
-"q": "Ponieważ rzeka wylała, droga została zamknięta. Wiadomo, że rzeka wylała. Czy droga została zamknięta? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "l6e67f621",
-"kind": "nie wszystkie",
-"level": 1,
-"q": "Nie wszystkie koty są głośne. Czy żadne koty nie są głośne? Odpowiedz: tak, nie albo nie wiadomo.",
-"options": [
-{
-"v": "tak",
-"label": "tak"
-},
-{
-"v": "nie",
-"label": "nie"
-},
-{
-"v": "nw",
-"label": "nie wiadomo"
-}
-],
-"model_acc": 0.0
-},
-{
-"id": "ldf01e85c",
-"kind": "kolejność w czasie",
-"level": 1,
-"q": "Marta przyszła wcześniej niż Filip. Filip przyszedł wcześniej niż Bartek. Kto przyszedł ostatni? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Bartek"
 },
 {
 "v": "b",
@@ -3359,34 +3462,14 @@
 "label": "Marta"
 }
 ],
-"model_acc": 0.3333
+"model_acc": 0.2688,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 },
 {
-"id": "l86f36a24",
-"kind": "porządek",
+"id": "l519d400e",
+"kind": "przyczyna",
 "level": 1,
-"q": "Adam ma 179 cm wzrostu, Bartek ma 170 cm, a Darek ma 196 cm. Kto jest najniższy? Podaj imię.",
-"options": [
-{
-"v": "a",
-"label": "Adam"
-},
-{
-"v": "b",
-"label": "Bartek"
-},
-{
-"v": "c",
-"label": "Darek"
-}
-],
-"model_acc": 0.28
-},
-{
-"id": "le902b4e4",
-"kind": "aspekt",
-"level": 1,
-"q": "Darek przeczytał książkę. Czy Darek skończył tę czynność? Odpowiedz: tak, nie albo nie wiadomo.",
+"q": "Jeśli zgasło światło, to w pokoju zrobiło się ciemno. Wiadomo, że w pokoju zrobiło się ciemno. Czy na pewno zgasło światło? Odpowiedz: tak, nie albo nie wiadomo.",
 "options": [
 {
 "v": "tak",
@@ -3401,7 +3484,8 @@
 "label": "nie wiadomo"
 }
 ],
-"model_acc": 0.4583
+"model_acc": 0.1111,
+"model_acc_from": "2026-10-25T01:29:47+0200"
 }
 ]
 }
