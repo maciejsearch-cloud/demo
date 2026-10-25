@@ -1,43 +1,43 @@
 {
- "tag": "node-20261025-0319-501b7ce",
- "built": "2026-10-25T03:20:04.587807+00:00",
- "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/40156892152",
- "pyz_sha256": "5480e8a732524b777488698732220642d8f5c71e9125cbad51ec29d1842178ed",
+ "tag": "node-20261025-0335-9b9e192",
+ "built": "2026-10-25T03:36:10.069377+00:00",
+ "run_url": "https://github.com/maciejsearch-cloud/demo/actions/runs/40158374214",
+ "pyz_sha256": "1f222ce21a1bc9e2248e91ef9ebf57d33875d86661e8f4efd7cdc5becbc51da9",
  "files": [
   {
    "os": "windows",
    "name": "MyceliumNode.exe",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0319-501b7ce/MyceliumNode.exe",
-   "sha256": "37e51e31523338526d7c8d7a156b8a6c098a20183da0d3545533cf51067fd0de",
-   "bytes": 162889197
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0335-9b9e192/MyceliumNode.exe",
+   "sha256": "5e3cc981a9a6f8e25d52c629a6a50ed45f657886a8e1dc45261d8060030d5255",
+   "bytes": 173446517
   },
   {
    "os": "windows-directml",
    "name": "MyceliumNode-DirectML.exe",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0319-501b7ce/MyceliumNode-DirectML.exe",
-   "sha256": "25d5dd88cee2ab7c7ead70725bcf1ba72593d7cc91c955a04c2d6516a2649eb2",
-   "bytes": 165366307
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0335-9b9e192/MyceliumNode-DirectML.exe",
+   "sha256": "e71289c1a52cae256bdda717a0fcd2492c19692c9acc3983a26f978c274c7741",
+   "bytes": 165368620
   },
   {
    "os": "linux",
    "name": "MyceliumNode-linux-x64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0319-501b7ce/MyceliumNode-linux-x64",
-   "sha256": "b42ffde6b3b3a00a23901062bc20352bffb091075e1109b14f8235e6ad801d8f",
-   "bytes": 256579992
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0335-9b9e192/MyceliumNode-linux-x64",
+   "sha256": "7792661f77bed0b67e3671bc66e3af34ea993012d3aedc823efb3245eb29ae89",
+   "bytes": 271280216
   },
   {
    "os": "macos",
    "name": "MyceliumNode-macos-arm64",
-   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0319-501b7ce/MyceliumNode-macos-arm64",
-   "sha256": "f08736d0c6a956fd88eea30eddfb885f3b5a389af19d4f4f1b0be32282a5a387",
-   "bytes": 174590608
+   "url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0335-9b9e192/MyceliumNode-macos-arm64",
+   "sha256": "e88109353a611b41e6737a80e62cb8f3ee227bd7195943ac64d4ed5dee5d50aa",
+   "bytes": 178353376
   }
  ],
  "smoke": {
-  "macos": "ok (30 s)",
-  "windows-directml": "ok (20 s)",
-  "linux": "ok (20 s)",
-  "windows": "ok (281 s)"
+  "macos": "ok (20 s, rozbi\u00f3r role-F1 0.8843 na 100 zdaniach, 2807 ms epoki)",
+  "windows-directml": "ok (20 s, rozbi\u00f3r role-F1 0.8819 na 100 zdaniach, 1202 ms epoki)",
+  "linux": "ok (20 s, rozbi\u00f3r role-F1 0.8843 na 100 zdaniach, 2314 ms epoki)",
+  "windows": "ok (20 s, rozbi\u00f3r role-F1 0.8843 na 100 zdaniach, 2648 ms epoki)"
  },
  "smoke_gpu": {
   "windows-directml": {
@@ -45,15 +45,15 @@
    "adapter": "",
    "cpu": {
     "dtype": "bfloat16",
-    "s_per_step": 174.537,
-    "loss0": 16.782589
+    "s_per_step": 0.4783,
+    "loss0": 16.784744
    },
    "gpu": null,
    "ok": false,
    "reason": "DirectML niedost\u0119pny: torch-directml nie widzi zgodnej karty (DirectX 12)"
   }
  },
- "sums_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0319-501b7ce/SHA256SUMS.txt",
- "sig_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0319-501b7ce/SHA256SUMS.txt.sigstore.json",
+ "sums_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0335-9b9e192/SHA256SUMS.txt",
+ "sig_url": "https://github.com/maciejsearch-cloud/demo/releases/download/node-20261025-0335-9b9e192/SHA256SUMS.txt.sigstore.json",
  "workflow": "https://github.com/maciejsearch-cloud/demo/.github/workflows/mycelium-node-build.yml"
 }
