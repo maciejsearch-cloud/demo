@@ -40,7 +40,8 @@ jobs:
         shell: bash
         run: |
           if [ "${{ matrix.plat }}" = windows-directml ]; then python -m pip install -q torch==2.4.1 torch-directml; elif [ "${{ matrix.plat }}" = macos ]; then python -m pip install -q torch; else python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu; fi
-          python -m pip install -q websockets pyinstaller sigstore psutil
+          # numpy: zadanie rozbioru zdań (douczanie modelu PDB na węźle); Morfeusz nie jest potrzebny do treningu
+          python -m pip install -q websockets pyinstaller sigstore psutil "numpy>=2.0"
       - name: Budowanie
         shell: bash
         run: |
@@ -84,6 +85,12 @@ jobs:
                   p.wait(30)
               except Exception:
                   p.kill()
+          if "--rozbior-selftest" in open("build_src/iot_mycelium/mesh/node.py", encoding="utf-8").read():
+              # prawdziwe zadanie rozbioru w pliku wykonywalnym: opublikowany model + odłamek train-pdb, 1 epoka, ocena
+              rb = subprocess.run([exe, "--rozbior-selftest"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=1200)
+              print(rb.stdout[-3000:], rb.stderr[-3000:])
+              assert rb.returncode == 0, "zadanie rozbioru nie zadziałało w pliku wykonywalnym"
+              smoke["rozbior"] = json.loads(rb.stdout.strip().splitlines()[-1])
           if "--gpu-info" in open("build_src/iot_mycelium/mesh/node.py", encoding="utf-8").read():
               # karty z systemu (WMI na Windows) + w wariancie DirectML test CPU vs DirectML (na serwerze CI: WARP,
               # programowy DirectML – sprawdza działanie operacji i zgodność straty, nie prędkość prawdziwej karty)
@@ -155,7 +162,8 @@ jobs:
               files.append({"os": o, "name": n, "url": f"https://github.com/{repo}/releases/download/{tag}/{n}", "sha256": hashlib.sha256(b).hexdigest(), "bytes": len(b)})
           smoke, smoke_gpu = {}, {}
           for f in glob.glob("art/*/smoke.json"):
-              s = json.load(open(f)); smoke[s["plat"]] = f"ok ({s['s']} s)"
+              s = json.load(open(f)); rb = s.get("rozbior") or {}
+              smoke[s["plat"]] = f"ok ({s['s']} s" + (f", rozbiór role-F1 {rb['role_f1']} na {rb['eval_n']} zdaniach, {rb['train_ms']} ms epoki" if rb.get("ok") else "") + ")"
               if s.get("gpu"):
                   smoke_gpu[s["plat"]] = s["gpu"]
           pyz = hashlib.sha256(open("mycelium/node/mycelium-node.pyz", "rb").read()).hexdigest()
