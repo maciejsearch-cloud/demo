@@ -1,5 +1,5 @@
 {
- "when": "2026-11-01T00:14:23+01:00",
+ "when": "2026-11-01T00:41:52+01:00",
  "model": "model grzybni v3",
  "logic": {
   "n": 320,
@@ -111,5 +111,5 @@
   "abstain": 36,
   "wrong": 0
  },
- "python_same": true
+ "python_same": null
 }
