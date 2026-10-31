@@ -64,7 +64,18 @@ jobs:
           if "--selfupdate-selftest" in open("build_src/iot_mycelium/mesh/node.py", encoding="utf-8").read():
               st = subprocess.run([exe, "--selfupdate-selftest"], capture_output=True, text=True, timeout=300)
               assert st.returncode == 0, "brak biblioteki sigstore w binarium: " + st.stdout + st.stderr
-          p = subprocess.Popen([exe, "--join", "--name", f"ci-{plat}", "--threads", "2", "--no-lm", "--status-port", "8765"])
+          src = open("build_src/iot_mycelium/mesh/node.py", encoding="utf-8").read()
+          if "--wallet-selftest" in src:
+              # portfel MYC-test: podpisy Ed25519, łańcuch, Merkle, odrzucenie podwójnego wydania (świeże klucze, bez bazy)
+              ws = subprocess.run([exe, "--wallet-selftest"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+              print(ws.stdout[-2000:], ws.stderr[-2000:])
+              assert ws.returncode == 0, "walidacja portfela nie działa w pliku wykonywalnym"
+              wallet = json.loads(ws.stdout.strip().splitlines()[-1])
+          else:
+              wallet = None
+          # węzeł testowy CI nie poświadcza bloków prawdziwej księgi (--no-wallet)
+          extra = ["--no-wallet"] if "--no-wallet" in src else []
+          p = subprocess.Popen([exe, "--join", "--name", f"ci-{plat}", "--threads", "2", "--no-lm", "--status-port", "8765", *extra])
           t0, st = time.time(), None
           try:
               while time.time() - t0 < 1500:
@@ -79,6 +90,8 @@ jobs:
               assert st and st.get("connected"), f"brak połączenia: {st}"
               print("OK", json.dumps({k: st.get(k) for k in ("connected", "peers", "nodes_online", "backend", "label")}))
               smoke = {"plat": plat, "ok": True, "s": round(time.time() - t0), "nodes_online": st.get("nodes_online")}
+              if wallet:
+                  smoke["wallet"] = wallet
           finally:
               p.terminate()
               try:
