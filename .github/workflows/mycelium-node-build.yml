@@ -26,7 +26,7 @@ jobs:
           # wariant z GPU przez DirectML (AMD/Intel/NVIDIA na Windows): torch-directml wymaga PyTorch 2.4.1
           - { os: windows-latest, plat: windows-directml, file: MyceliumNode-DirectML.exe, base: MyceliumNode-DirectML }
           - { os: ubuntu-22.04, plat: linux, file: MyceliumNode-linux-x64, base: MyceliumNode-linux-x64 }
-          - { os: macos-14, plat: macos, file: MyceliumNode-macos-arm64, base: MyceliumNode-macos-arm64 }
+          - { os: macos-15, plat: macos, file: MyceliumNode-macos-arm64, base: MyceliumNode-macos-arm64 }
     runs-on: ${{ matrix.os }}
     timeout-minutes: 75
     steps:
